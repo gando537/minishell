@@ -1,0 +1,45 @@
+Votre shell devrait :
+- Ne pas interpréter les guillemets non fermés ou les caractères spéciaux non spécifiés comme \ ou ;.
+- Ne pas utiliser plus d'une variable globale. Réfléchissez-y et soyez prêt à expliquer pourquoi vous le faites.
+- Afficher une invite lorsqu'il attend une nouvelle commande.
+- Avoir un historique fonctionnel.
+- rechr et lancer le bon exécutable (sur la base de la variable PATH ou en utilisant le
+chemin relatif ou absolu)
+- Il doit implémenter les builtins :
+◦ echo avec l'option -n
+◦ cd avec uniquement un chemin relatif ou absolu
+◦ pwd sans option
+4
+Minishell Aussi beau qu'un shell
+◦ export sans options
+◦ unset sans options
+◦ env sans options ni arguments
+◦ exit sans options
+- ' inhibe toute interprétation d'une séquence de caractères.
+- " inhiber toute interprétation d'une séquence de caractères à l'exception de $.
+- Redirections :
+◦ < doit rediriger l'entrée.
+◦ > doit rediriger la sortie.
+◦ "<<" lire l'entrée de la source actuelle jusqu'à ce qu'une ligne ne contenant que le délimiteur soit vue. il n'a pas besoin de mettre à jour l'historique !
+◦ ">>" devrait rediriger la sortie avec le mode append.
+- Pipes | La sortie de chaque commande du pipeline est connectée via un pipe à l'entrée de la
+entrée de la commande suivante.
+- Les variables d'environnement ($ suivi de caractères) doivent se développer vers leurs valeurs.
+- $ ? doit se développer jusqu'à l'état de sortie du pipeline de premier plan le plus récemment exécuté.
+pipeline.
+- ctrl-C ctrl-D ctrl-\ devrait fonctionner comme dans bash.
+- En mode interactif :
+◦ ctrl-C imprime une nouvelle invite sur une nouvelle ligne.
+◦ ctrl-D quitte le shell.
+◦ ctrl-\ ne fait rien.
+La fonction readline peut produire des fuites que vous n'avez pas besoin de corriger. Mais attention, votre propre code ne doit pas produire de fuites. Vous devez vous limiter à la description du sujet.
+Tout ce qui n'est pas demandé n'est pas nécessaire.
+Pour chaque point, si vous avez un doute, prenez bash comme référence.
+5
+Chapitre IV
+Partie bonus
+- Si la partie obligatoire n'est pas parfaite ne pensez même pas aux bonus
+- &&, || avec des parenthèses pour les priorités.
+- le joker * doit fonctionner pour le répertoire de travail actuel.
+
+Traduit avec www.DeepL.com/Translator (version gratuite)
