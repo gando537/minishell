@@ -6,92 +6,73 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 13:58:03 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/09/02 19:03:24 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/01 17:53:46 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "Includes/minishell.h"
 
-t_listenv	*ft_new_elm(char *name, char *value)
+int	var_bis(t_listenv *tmp, char *name, char *value)
 {
-	t_listenv	*new_maillon;
+	int	i;
 
-	new_maillon = malloc(sizeof(t_listenv));
-	if (!new_maillon)
-		return (NULL);
-	new_maillon->name = ft_strdup(name);
-    new_maillon->value = ft_strdup(value);
-	new_maillon->next = NULL;
-	return (new_maillon);
-}
-
-// t_stack	*create_elem(void)
-// {
-// 	t_stack	*new;
-
-// 	new = malloc(sizeof(t_stack));
-// 	if (!new)
-// 		return (NULL);
-// 	return (new);
-// }
-
-t_listenv	**create_listenv(void)
-{
-	t_listenv	**new;
-
-	new = malloc(sizeof(t_listenv *));
-	if (!new)
-		return (NULL);
-	*new = NULL;
-	return (new);
-}
-
-void	push_back(t_listenv **listenv, t_listenv *new)
-{
-	t_listenv   *p_listenv;
-
-	if (!listenv || !new)
-		return ;
-	if (!(*listenv))
+	i = 0;
+	if (ft_strcmp(tmp->name, name) == 0)
 	{
-		*listenv = new;
-		return ;
+		free(tmp->value);
+		tmp->value = ft_strdup(value);
+		i = 1;
 	}
-	p_listenv = *listenv;
-	while (p_listenv->next != NULL)
-		p_listenv = p_listenv->next;
-	p_listenv->next = new;
+	return (i);
 }
 
-void	add_var(t_listenv **listenv, char *name, char *value)
+char	*parse_value(t_data *data, char *value)
+{
+	int		j;
+	char	*s;
+	char	*new_val;
+	char	*substr;
+
+	s = (char *)NULL;
+	substr = ft_substr(value, '$');
+	if (substr)
+		s = _var_mp(data, substr + 1);
+	new_val = malloc(ft_strlen(value) + ft_strlen(s) + 1);
+	j = -1;
+	while (value[++j])
+		new_val[j] = value[j];
+	new_val[j] = '\0';
+	if (s)
+		str_replace(new_val, substr, s);
+	return (new_val);
+}
+
+void	add_var(t_data *data, t_listenv **listenv, char *name, char *value)
 {
 	t_listenv	*tmp;
 	t_listenv	*new;
+	char		*new_val;
 	int			i;
 
 	i = 0;
+	new_val = parse_value(data, value);
 	if (*listenv != NULL)
 	{
 		tmp = *listenv;
 		while (tmp != NULL)
 		{
-			if (ft_strcmp(tmp->name, name) == 0)
-			{
-				free(tmp->value);
-				tmp->value = ft_strdup(value);
-				i = 1 ;
-			}
+			i = var_bis(tmp, name, new_val);
 			tmp = tmp->next;
 		}
 	}
 	if (i == 0)
 	{
-		new = ft_new_elm(name, value);
+		new = ft_new_elm(name, new_val);
 		push_back(listenv, new);
 	}
+	free(new_val);
 }
 
-// void	gestion_var()
 
 void	pop_var_bis(t_listenv *curr, char *name)
 {

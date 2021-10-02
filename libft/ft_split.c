@@ -6,17 +6,19 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 16:59:43 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/08/20 16:59:17 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/01 17:55:31 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../Includes/libft.h"
 
 size_t	ft_strlen(char *str)
 {
 	size_t	len;
 
 	len = 0;
+	if (!str)
+		return (len);
 	while (str[len])
 		len++;
 	return (len);

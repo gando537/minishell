@@ -6,70 +6,86 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 16:20:24 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/08/20 16:59:13 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/01 17:51:11 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "Includes/minishell.h"
 
-int	ft_strcmp(char *s1, char *s2)
+static void write_fd(t_gnl gnl)
 {
-	int i;
-
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
+	if (gnl.buf)
+		write(0, gnl.buf, 1);
 }
 
-void	ft_putchar_fd(char c, int fd)
+int	press_keys(t_gnl gnl, t_data *data, char **line)
 {
-	write(fd, &c, 1);
+	int	i;
+
+	if (cheker_keys(gnl))
+	{
+		if (gnl.buf[0] == 127)
+		{
+			trm_backspace(data, line, gnl);
+			return (1);
+		}
+		i = fctn_ctrl(gnl, data, line);
+		if (i == 2)
+			return (i);
+		execute_key(data, gnl, line);
+		return (1);
+	}
+	return (0);
 }
 
-void	ft_putstr_fd(char const *s, int fd)
-{
-	while (*s)
-		ft_putchar_fd(*s++, fd);
-}
-
-void	get_next_line_bis(char **line, char *tmp, int l, char c)
+int		checker_ctrl(t_gnl gnl, t_data *data, char **line)
 {
 	int		i;
 
-	i = -1;
-	while (++i < l - 2)
-		tmp[i] = (*line)[i];
-	tmp[i] = c;
-	tmp[i + 1] = 0;
-	free(*line);
-	*line = tmp;
+	i = press_keys(gnl, data, line);
+	if (!i)
+	{
+		write_fd(gnl);
+		return (1);
+	}
+	else if (i == 2)
+	{
+		free(gnl.buf);
+		return (0);
+	}
+	return (2);
 }
 
-int	get_next_line(char **line, int fd)
+void	re_init(t_data *data, t_gnl gnl)
 {
-	int		l;
-	int		r;
-	char	c;
-	char	*tmp;
+	free(gnl.buf);
+	data->hist_curr_up = *(data->hist);
+	data->hist_curr_down = NULL;
+}
 
-	r = 0;
-	l = 1;
-	*line = malloc(l);
-	if (!*line)
-		return (-1);
+void	gnl_term(char **line, int fd, t_data *data)
+{
+	t_gnl	gnl;
+
+	gnl.r = 0;
+	gnl.l = 1;
+	*line = malloc(gnl.l);
+	gnl.buf = malloc(sizeof(char) * 3 + 1);
 	(*line)[0] = 0;
-	r = read(fd, &c, 1);
-	while (r && l++ && c != '\n')
+	data->pos = 0;
+	gnl.r = read(fd, gnl.buf, 3);
+	if (!checker_ctrl(gnl, data, line))
+		return ;
+	while (gnl.r && gnl.buf[0] != '\n')
 	{
-		tmp = malloc(l);
-		if (!tmp)
+		if (!cheker_keys(gnl))
 		{
-			free(*line);
-			return (-1);
+			gnl.l++;
+			gnl_term_bis(line, gnl, data);
 		}
-		get_next_line_bis(line, tmp, l, c);
-		r = read(fd, &c, 1);
+		gnl.r = read(fd, gnl.buf, 3);
+		if (!checker_ctrl(gnl, data, line))
+			return ;
 	}
-	return (r);
+	re_init(data, gnl);
 }
