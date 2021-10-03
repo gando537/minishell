@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:05:21 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:55:19 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/03 15:56:07 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ char	*display_prompt()
 	char	**rep;
 
 	getcwd(path, 255);
-	res = ft_strjoin("\033[34;01m➜ [\033[33mroot@\033[035m", getenv("USER"));
-	res1 = ft_strjoin(res, "\033[34;01m]:\033[36m ");
+	res = ft_strjoin("\033[34;01m➜ [\033[33m User@\033[035m", getenv("USER"));
+	res1 = ft_strjoin(res, "\033[34;01m ]:\033[36m ");
 	free(res);
 	rep = ft_split(path, '/');
 	if (ft_strcmp(path, "/") == 0)
@@ -73,7 +73,7 @@ char	*display_prompt()
 		res2 = ft_strjoin(res1, "~");
 	else
 		res2 = ft_strjoin(res1, rep[len_split(rep) - 1]);
-	res = ft_strjoin(res2, "$\033[00m ");
+	res = ft_strjoin(res2, " $\033[00m ");
 	free(res1);
 	free(res2);
 	free_split(rep);

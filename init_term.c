@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 15:44:28 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/02 19:39:19 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/03 14:37:41 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	fctn_ctrl(t_gnl gnl, t_data *data, char **line)
 		return (2);
 	}
 	if (gnl.buf[0] == 9)
-		gnl.buf[0] = 0;
+		return (3);
 	return (0);
 }
 

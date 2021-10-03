@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:46:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 20:46:42 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/03 14:46:36 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,7 @@ char		*rm_quotes(char *cmd);
 void		gand(char *s, t_data *data);
 int			ft_chdir(char *r);
 int			builtin_pwd();
+char		*dup_key(char *buf);
 int			var_bis(t_listenv *tmp, char *name, char *value);
 int			search_vari(t_data *data, char **split);
 char		*_var_mp(t_data *data, char *var);

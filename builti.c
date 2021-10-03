@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:35:57 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:50:25 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/03 14:52:14 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,16 @@ int	builti_bis_(t_data *data, char **split)
 		return (1);
 	}
 	return (0);
+}
+
+char	*dup_key(char *buf)
+{
+    char	*dst;
+
+	dst = malloc(sizeof(*dst) * 4);
+    if (!dst)
+        return (NULL);
+    dst[0] = '\0';
+    free(buf);
+    return (dst);
 }
