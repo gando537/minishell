@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 12:51:39 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 20:26:54 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 00:33:15 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ char	*ft_pos(char *name, char *sub_str)
 	char	*s;
 	size_t	n;
 
-	if (*name == '.' 
-		|| ft_strlen(sub_str) > ft_strlen(name))
+	if (*name == '.' || ft_strlen(sub_str) > ft_strlen(name))
 		return (0);
 	s = name + ft_strlen(name);
 	n = ft_strlen(sub_str);
@@ -44,29 +43,29 @@ char	*joker_m(char *str, char *sub_str, struct dirent *entry, int i)
 {
 	char	*s;
 
-	s = (char *)NULL;
+	s = (char *) NULL;
 	if (i == 0)
 	{
 		s = ft_pos(entry->d_name, sub_str);
 		if (!s || ft_strcmp(s, sub_str))
-			return ((char *)NULL);
+			return ((char *) NULL);
 	}
 	else
 	{
 		if (ft_strncmp(entry->d_name, sub_str, ft_strlen(sub_str)))
-			return ((char *)NULL);
+			return ((char *) NULL);
 	}
 	return (replik_j(str, entry->d_name));
 }
 
-char	*joker_bis()
+char	*joker_bis(void)
 {
 	char			*tmp;
 	char			*s;
-	DIR 			*folder;
+	DIR				*folder;
 	struct dirent	*entry;
 
-    folder = opendir(".");
+	folder = opendir(".");
 	entry = readdir(folder);
 	while (entry)
 	{

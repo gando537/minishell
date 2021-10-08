@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:28:18 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:56:37 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 00:49:40 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_redir(char *r)
 	return (0);
 }
 
-int replace_in(char *s, int i)
+int	replace_in(char *s, int i)
 {
 	str_replace(s, "< ", "<");
 	str_replace(s, " <", "<");
@@ -31,7 +31,7 @@ int replace_in(char *s, int i)
 	return (i);
 }
 
-int replace_inin(char *s, int i)
+int	replace_inin(char *s, int i)
 {
 	str_replace(s, "<< ", "<<");
 	str_replace(s, " <<", "<<");
@@ -40,7 +40,7 @@ int replace_inin(char *s, int i)
 	return (i);
 }
 
-int replace_out(char *s, int i)
+int	replace_out(char *s, int i)
 {
 	str_replace(s, "> ", ">");
 	str_replace(s, " >", ">");
@@ -49,7 +49,7 @@ int replace_out(char *s, int i)
 	return (i);
 }
 
-int replace_outout(char *s, int i)
+int	replace_outout(char *s, int i)
 {
 	str_replace(s, ">> ", ">>");
 	str_replace(s, " >>", ">>");

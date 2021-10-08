@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 17:15:50 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:53:55 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:01:26 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_pipex(t_data *data)
 	int			i;
 	t_cmdpath	*compath;
 
-	i = -1; 
+	i = -1;
 	if (data->nb_pipes)
 		data->wp = list_wp();
 	while (data->pip[++i])

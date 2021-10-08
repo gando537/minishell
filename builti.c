@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:35:57 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/03 14:52:14 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:56:38 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	checker_builti(char *r, char **cmd_split, t_data *data)
 		free_split(cmd_split);
 		return (1);
 	}
-	if (ft_strcmp(cmd_split[0], "pwd") == 0 
+	if (ft_strcmp(cmd_split[0], "pwd") == 0
 		|| ft_strcmp(cmd_split[0], "echo") == 0)
 	{
 		builtin_pwd_echo(data, cmd_split, r);
@@ -84,12 +84,12 @@ int	builti_bis_(t_data *data, char **split)
 
 char	*dup_key(char *buf)
 {
-    char	*dst;
+	char	*dst;
 
 	dst = malloc(sizeof(*dst) * 4);
-    if (!dst)
-        return (NULL);
-    dst[0] = '\0';
-    free(buf);
-    return (dst);
+	if (!dst)
+		return (NULL);
+	dst[0] = '\0';
+	free(buf);
+	return (dst);
 }

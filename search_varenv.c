@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 12:14:27 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 20:42:10 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:26:56 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ size_t	len_variable(char *str)
 // 	return (0);
 // }
 
-
 char	*_var_mp(t_data *data, char *var)
 {
 	t_listenv	*tmp;
@@ -71,7 +70,7 @@ char	*_var_mp(t_data *data, char *var)
 			return (tmp->value);
 		tmp = tmp->next;
 	}
-	return ((char *)NULL);
+	return ((char *) NULL);
 }
 
 char	*new_str_bis(t_data *data, char *cmd_split, char *tmp, char *s_nul)
@@ -79,8 +78,8 @@ char	*new_str_bis(t_data *data, char *cmd_split, char *tmp, char *s_nul)
 	char	*s;
 	char	*tmp1;
 
-	s = (char *)NULL;
-	tmp1 = (char *)NULL;
+	s = (char *) NULL;
+	tmp1 = (char *) NULL;
 	if (cmd_split[1] == '$')
 	{
 		tmp1 = ft_strjoin(tmp, data->pid_sh);
@@ -106,7 +105,7 @@ char	*reduce(t_data *data, char *str, int i)
 {
 	char	*var;
 
-	var = (char *)NULL;
+	var = (char *) NULL;
 	if (str[i] == '*')
 	{
 		if (str[i + 1] && str[i + 1] != ' ' && str[i - 1] != ' ')
@@ -131,7 +130,7 @@ char	*joker_quotes(t_data *data, char *cmd)
 
 	str = rm_quotes(cmd);
 	if (!str || *str == '*')
-		return ((char*)NULL);
+		return ((char *) NULL);
 	i = 0;
 	while (str[i])
 	{
@@ -141,7 +140,7 @@ char	*joker_quotes(t_data *data, char *cmd)
 			printf("minishell: no matches found: %s\n", data->sub_str);
 			data->last_exit = 1;
 			free(data->sub_str);
-			return ((char *)NULL);
+			return ((char *) NULL);
 		}
 		i++;
 	}

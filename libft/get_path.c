@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:29:42 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:55:59 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 00:57:00 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*stripwhite(char *string)
 	while (ft_isspace(*s))
 		s++;
 	if (*s == 0)
-    	return (s);
+		return (s);
 	t = s + ft_strlen (s) - 1;
 	while (t > s && ft_isspace (*t))
 		t--;

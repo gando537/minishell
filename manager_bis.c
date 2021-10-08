@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:48:03 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:52:37 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:14:50 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_nb_sep(char *str)
 	n = 0;
 	while (str[i])
 	{
-		if ((str[i] == '|' && str[i + 1] == '|') ||\
+		if ((str[i] == '|' && str[i + 1] == '|') || \
 			(str[i] == '&' && str[i + 1] == '&'))
 			n++;
 		i++;
@@ -33,14 +33,13 @@ static char	*parsing_cmd(char *r)
 {
 	int		nb_sep;
 	char	*tmp;
-	
 
 	nb_sep = ft_nb_sep(r);
 	tmp = r;
 	if (nb_sep)
 	{
 		r = malloc(sizeof(char) * ft_strlen(r) + 2 * nb_sep + 1);
-		ft_strcpy(r,tmp);
+		ft_strcpy(r, tmp);
 		replace_andor(r);
 		free(tmp);
 	}

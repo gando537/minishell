@@ -6,13 +6,13 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:28:23 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:56:41 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 00:57:49 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/libft.h"
 
-int replace_pip(char *s, int i)
+int	replace_pip(char *s, int i)
 {
 	str_replace(s, "| ", "|");
 	str_replace(s, " |", "|");
@@ -36,9 +36,9 @@ char	*redirection(char *r)
 	char	*new_r;
 	int		nb;
 	int		i;
-	
+
 	nb = ft_nbre(r);
-	new_r = ft_strndup(r,ft_strlen(r) + (nb * 2));
+	new_r = ft_strndup(r, ft_strlen(r) + (nb * 2));
 	free(r);
 	i = 0;
 	while (new_r[i])

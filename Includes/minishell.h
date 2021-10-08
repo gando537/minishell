@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:46:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/03 14:46:36 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 03:34:23 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,20 @@ typedef struct s_jok
 	char	*tmp1;
 }t_jok;
 
-
-typedef struct      s_trmkey
+typedef struct s_trmkey
 {
-    char            *on;
-    char            *up;
+	char			*on;
+	char			*up;
 	char			*down;
-    char            *right;
-    char            *del;
-    char            *delk;
-    char            *left;
-    char            *clear;
-    char            *mov_csr;
-    char            *save;
-    char            *reset;
-}                   t_trmkey;
+	char			*right;
+	char			*del;
+	char			*delk;
+	char			*left;
+	char			*clear;
+	char			*mov_csr;
+	char			*save;
+	char			*reset;
+}t_trmkey;
 
 typedef struct s_hist
 {
@@ -125,7 +124,7 @@ t_fork		*create_wp(pid_t pid);
 void		add_waitpid(t_fork **wp, t_fork *new);
 void		gnl_term(char **line, int fd, t_data *data);
 void		all_free(t_data *data);
-void    	ft_pipex(t_data *data);
+void		ft_pipex(t_data *data);
 t_data		*get_shell(char **envp);
 void		fcnt_exit(char *r, t_data *data);
 
@@ -169,11 +168,11 @@ t_listenv	**init_listenv(char **envp);
 int			cheker_keys(t_gnl gnl);
 void		printer_env(t_listenv **listenv);
 void		execute_key(t_data *data, t_gnl gnl, char **line);
-void  		insert_char(t_data *data, char **line, t_gnl gnl);
+void		insert_char(t_data *data, char **line, t_gnl gnl);
 void		gnl_term_bis(char **line, t_gnl gnl, t_data *data);
 char		*parse_cmd(t_data *data, char *cmd);
 void		valid_red(char **cmd, t_data *data, char *tmp, int i);
-void 		loop_insert_char(int pos, char *dst, char *tmp, t_gnl gnl);
+void		loop_insert_char(int pos, char *dst, char *tmp, t_gnl gnl);
 
 int			builti_bis_(t_data *data, char **split);
 int			checker_builti(char *r, char **cmd_split, t_data *data);
@@ -190,18 +189,16 @@ char		*rm_quotes(char *cmd);
 
 void		gand(char *s, t_data *data);
 int			ft_chdir(char *r);
-int			builtin_pwd();
+int			builtin_pwd(void);
 char		*dup_key(char *buf);
 int			var_bis(t_listenv *tmp, char *name, char *value);
 int			search_vari(t_data *data, char **split);
 char		*_var_mp(t_data *data, char *var);
 char		*rl_gets(t_data *data, char *prompt);
 char		*ft_substr(char *str, char c);
-t_cmd 		*loop_cmd(t_data *data, t_cmd *tmp);
+t_cmd		*loop_cmd(t_data *data, t_cmd *tmp);
 void		add_hist(t_data *data, char *cmd);
 int			check_echo(t_data *data, char **cmd_split);
 char		*new_str_bis(t_data *data, char *cmd_split, char *tmp, char *s_nul);
-
-
 
 #endif

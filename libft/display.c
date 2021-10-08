@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:05:21 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/03 15:56:07 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 00:40:41 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,36 +25,37 @@ void	replace_escap(char *s)
 	}
 }
 
-char	*clear_sc()
+char	*clear_sc(void)
 {
 	const char	*clear;
 
 	clear = "\e[1;1H\e[2J";
 	write(1, clear, 11);
-	return ((char *)NULL);
+	return ((char *) NULL);
 }
 
-void    display_right(int i, char **line)
+void	display_right(int i, char **line)
 {
-    char *s;
+	char	*s;
 
-    s = *line;
-    while (s[i])
-    {
-        write(0, s + i, 1);
-        ++i;
-    }
+	s = *line;
+	while (s[i])
+	{
+		write(0, s + i, 1);
+		++i;
+	}
 }
-void    move_cursor_left(size_t *s, char *left)
+
+void	move_cursor_left(size_t *s, char *left)
 {
-    while (*s)
-    {
-        ft_putstr_fd(left, 0);
-        *s -= 1;
-    }
+	while (*s)
+	{
+		ft_putstr_fd(left, 0);
+		*s -= 1;
+	}
 }
 
-char	*display_prompt()
+char	*display_prompt(void)
 {
 	char	path[255];
 	char	*res;
@@ -77,5 +78,5 @@ char	*display_prompt()
 	free(res1);
 	free(res2);
 	free_split(rep);
-	return(res);
+	return (res);
 }

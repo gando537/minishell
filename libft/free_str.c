@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:44:24 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 20:09:26 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 00:53:56 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isinset(int c, char *set)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!c)

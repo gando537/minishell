@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 20:22:46 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 20:33:11 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 00:53:29 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 void	strcpy_no_quotes(char *s1, char *s2)
 {
 	int	i;
-    int	j;
-    int	flag;
+	int	j;
+	int	flag;
 
 	i = -1;
 	j = 0;
 	flag = -1;
 	while (s1[++i])
 	{
-		if (flag == -1 && ft_isinset(s1[i], "\"\'") && 
+		if (flag == -1 && ft_isinset(s1[i], "\"\'") && \
 			(i == 0 || s1[i - 1] != '\\'))
 			flag = i;
-		else if (flag != -1 && s1[flag] == s1[i] &&
+		else if (flag != -1 && s1[flag] == s1[i] && \
 			(s1[i - 1] != '\\' || s1[flag] == '\''))
 			flag = -1;
 		else
 		{
-			if (s1[i] == '\\' && (flag == -1 ||
+			if (s1[i] == '\\' && (flag == -1 ||\
 				(s1[flag] == '"' && ft_isinset(s1[i + 1], "$\"\\"))))
 				++i;
 			s2[j++] = s1[i];
@@ -59,7 +59,7 @@ char	*rm_quotes(char *cmd)
 	char	*tmp;
 
 	i = 0;
-	new_str = (char *)NULL;
+	new_str = (char *) NULL;
 	split = ft_split(cmd, '|');
 	while (split[i])
 	{

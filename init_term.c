@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 15:44:28 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/03 14:37:41 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 01:52:37 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int	fctn_ctrl(t_gnl gnl, t_data *data, char **line)
 
 static char	*init_key(int key)
 {
-	static char up[] = {27, 91, 65, 0};
-	static char right[] = {27, 91, 67, 0};
-	static char left[] = {27, 91, 68, 0};
-	static char down[] = {27, 91, 66, 0};
+	static char	up[] = {27, 91, 65, 0};
+	static char	right[] = {27, 91, 67, 0};
+	static char	left[] = {27, 91, 68, 0};
+	static char	down[] = {27, 91, 66, 0};
 
 	if (key == 0)
 		return (up);
@@ -104,6 +104,6 @@ t_data	*get_shell(char **envp)
 	init_terminal(data);
 	data->termkey = init_termcap();
 	data->listenv = init_listenv(envp);
-	data->var_tmp = init_listenv((char **)NULL);
+	data->var_tmp = init_listenv((char **) NULL);
 	return (data);
 }

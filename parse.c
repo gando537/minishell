@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:52:42 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:53:58 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:52:05 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_curr(char *str, int curr, char *s)
 {
-	if (curr == 0) 
+	if (curr == 0)
 		curr = get_non_escaped(str, curr, s);
 	return (curr);
 }

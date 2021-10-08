@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:09:38 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:56:33 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 03:36:19 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ char	*begend_str(char *sub_str, int i)
 	if (ft_strlen(tmp))
 		return (tmp);
 	free(tmp);
-	return ((char *)NULL);
+	return ((char *) NULL);
 }
 
 char	*parse_sub(char *sub_str)
 {
 	char	*str;
 
-	str = (char *)NULL;
+	str = (char *) NULL;
 	if (ft_strlen(sub_str) == 1)
 		return (joker_bis());
 	if (*sub_str == '*')
@@ -61,7 +61,6 @@ char	*parse_sub(char *sub_str)
 	return (str);
 }
 
-
 char	*joker(char *r, char *sub_str)
 {
 	char	*str;
@@ -78,5 +77,5 @@ char	*joker(char *r, char *sub_str)
 		free(r);
 		return (new_str);
 	}
-	return ((char *)NULL);
+	return ((char *) NULL);
 }

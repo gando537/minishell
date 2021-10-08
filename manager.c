@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:43:47 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:52:34 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:55:14 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*manager_bis(t_data *data)
 {
-	char 	*r;
+	char	*r;
 	char	*prompt;
 
 	tputs(tgetstr("vi", NULL), 1, ft_putchar);
@@ -48,17 +48,17 @@ static char	*get_manage(t_data *data, char *cmd)
 {
 	char	**sp;
 	char	*line_rd;
-	
+
 	line_rd = parse_cmd(data, cmd);
 	if (!line_rd)
-		return ((char *)NULL);
+		return ((char *) NULL);
 	sp = ft_split(line_rd, ' ');
 	if (*sp)
 	{
 		if (builti_bis_(data, sp) || checker_builti(line_rd, sp, data))
 		{
 			data->last_exit = 0;
-			return ((char *)NULL);
+			return ((char *) NULL);
 		}
 	}
 	free_split(sp);
@@ -82,7 +82,7 @@ static void	manager_w(t_data *data, char *line)
 
 void	manager(t_data *data)
 {
-	char 	*r;
+	char	*r;
 	char	*line;
 	t_cmd	**cmd;
 	t_cmd	*tmp;
@@ -98,7 +98,7 @@ void	manager(t_data *data)
 		line = get_manage(data, tmp->cmd);
 		if (!line)
 		{
-			tmp = loop_cmd(data, tmp);;
+			tmp = loop_cmd(data, tmp);
 			continue ;
 		}
 		fcnt_exit(line, data);

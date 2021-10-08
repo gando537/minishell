@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 16:59:30 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:50:47 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:18:59 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,8 @@ void	fcnt_exit(char *r, t_data *data)
 {
 	if (ft_strcmp(r, "exit") == 0)
 	{
-		tcsetattr(0,TCSANOW,&data->old_termios);
+		tcsetattr(0, TCSANOW, &data->old_termios);
 		free_data(data);
 		exit(0);
 	}
 }
-

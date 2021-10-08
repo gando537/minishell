@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 13:58:03 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:53:46 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:22:18 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*parse_value(t_data *data, char *value)
 	char	*new_val;
 	char	*substr;
 
-	s = (char *)NULL;
+	s = (char *) NULL;
 	substr = ft_substr(value, '$');
 	if (substr)
 		s = _var_mp(data, substr + 1);
@@ -72,7 +72,6 @@ void	add_var(t_data *data, t_listenv **listenv, char *name, char *value)
 	}
 	free(new_val);
 }
-
 
 void	pop_var_bis(t_listenv *curr, char *name)
 {

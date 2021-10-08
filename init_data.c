@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 12:06:15 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:52:45 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:31:40 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	search_str(char **tb, char *str)
 	return (i);
 }
 
-int check_file_exist(const char* filename)
+int	check_file_exist(const char *filename)
 {
 	struct stat	buffer;
 	int			exist;
-	
+
 	exist = stat(filename, &buffer);
 	if (exist == 0)
 		return (1);
@@ -43,12 +43,12 @@ char	*input_file(char *r, char **cmd, t_data *data)
 	size_t	len;
 
 	data->in = 1;
-	// if (len_split(cmd) <= 1)
-	// {
-	// 	free_split(cmd);
-	// 	perror("minishell");
-	// 	exit(EXIT_FAILURE);
-	// }
+	/*if (len_split(cmd) <= 1)
+	{
+		free_split(cmd);
+		perror("minishell");
+		exit(EXIT_FAILURE);
+	}*/
 	if (len_split(cmd) <= 1)
 		return (r);
 	s = r;
@@ -60,7 +60,6 @@ char	*input_file(char *r, char **cmd, t_data *data)
 	return (tmp);
 }
 
-
 char	*output_file(char **cmd, t_data *data, char *tmp)
 {
 	int	i;
@@ -68,14 +67,14 @@ char	*output_file(char **cmd, t_data *data, char *tmp)
 	i = 0;
 	while (cmd[i])
 	{
-		// if ((ft_strcmp(cmd[i],">") == 0 || ft_strcmp(cmd[i],">>") == 0)
-		// 	&& cmd[i + 1] == NULL)
-		// {
-		// 	free_split(cmd);
-		// 	perror("minishell");
-		// 	exit(EXIT_FAILURE);
-		// }
-		if ((ft_strcmp(cmd[i],">") == 0 || ft_strcmp(cmd[i],">>") == 0)
+		/*if ((ft_strcmp(cmd[i],">") == 0 || ft_strcmp(cmd[i],">>") == 0)
+			&& cmd[i + 1] == NULL)
+		{
+			free_split(cmd);
+			perror("minishell");
+			exit(EXIT_FAILURE);
+		}*/
+		if ((ft_strcmp(cmd[i], ">") == 0 || ft_strcmp(cmd[i], ">>") == 0)
 			&& cmd[i + 1] != NULL)
 			valid_red(cmd, data, tmp, i);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:13:43 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:55:52 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 00:48:17 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
@@ -24,7 +24,7 @@ int	ft_strcmp(char *s1, char *s2)
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0' && --n)

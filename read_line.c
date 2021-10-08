@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:27:03 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:53:53 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:34:49 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*parse_cmd(t_data *data, char *cmd)
 	free_split(sp);
 	if (rd)
 		return (rd);
-	return ((char *)NULL);
+	return ((char *) NULL);
 }
 
 char	*rl_gets(t_data *data, char *prompt)
@@ -34,7 +34,7 @@ char	*rl_gets(t_data *data, char *prompt)
 	char	*line_read;
 	char	*hist;
 
-	line_read = (char *)NULL;
+	line_read = (char *) NULL;
 	gnl_term(&line_read, 0, data);
 	if (prompt)
 		free(prompt);
@@ -49,7 +49,7 @@ char	*rl_gets(t_data *data, char *prompt)
 int	ft_chdir(char *r)
 {
 	char	*p_r;
-	
+
 	if (ft_strlen(r) < 3)
 	{
 		chdir(getenv("HOME"));
@@ -61,7 +61,8 @@ int	ft_chdir(char *r)
 		return (checker_path(p_r));
 	}
 }
-int	builtin_pwd()
+
+int	builtin_pwd(void)
 {
 	char	*buf;
 

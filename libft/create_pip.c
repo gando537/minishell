@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 12:04:19 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:55:10 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 00:35:23 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	check_pip(char **cmd)
 {
-	int i;
-	int nb_pip;
+	int	i;
+	int	nb_pip;
 
 	nb_pip = 0;
 	if (len_split(cmd) <= 1)
@@ -63,7 +63,7 @@ static int	ft_len(long int nbr)
 	int	len;
 
 	len = 0;
-	if (nbr <= 0) 
+	if (nbr <= 0)
 		len = 1;
 	while (nbr != 0)
 	{
@@ -80,7 +80,7 @@ char	*ft_itoa(int n)
 	char	*c;
 
 	sign = 1;
-	if (n < 0) 
+	if (n < 0)
 		sign = -1;
 	len = ft_len(n);
 	c = (char *)malloc(sizeof(char) * len + 1);

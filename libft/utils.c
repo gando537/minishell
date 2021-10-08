@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:57:59 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:56:57 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 00:47:45 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	is_first_char(char *str, char *set)
 
 int	is_last_char(char *str, char *set)
 {
-	size_t i;
+	size_t	i;
 
 	i = ft_strlen(str) - 1;
 	while (ft_isspace(str[i]))

@@ -6,21 +6,21 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:15:49 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/02 19:05:51 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:39:00 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Includes/minishell.h"
 
-int		cheker_keys(t_gnl gnl)
+int	cheker_keys(t_gnl gnl)
 {
-	if ((gnl.buf[0] == 127) || (gnl.buf[0] == 12) || (gnl.buf[0] == 3) ||\
-		(gnl.buf[0] == 27 && gnl.buf[1] == 91 && gnl.buf[2] == 65) ||\
-		(gnl.buf[0] == 27 && gnl.buf[1] == 91 && gnl.buf[2] == 66) ||\
-		(gnl.buf[0] == 27 && gnl.buf[1] == 91 && gnl.buf[2] == 67) ||\
-		(gnl.buf[0] == 27 && gnl.buf[1] == 91 && gnl.buf[2] == 68) ||\
-		(gnl.buf[0] == 27 && gnl.buf[1] == 91 && gnl.buf[2] == 70) ||\
-		(gnl.buf[0] == 27 && gnl.buf[1] == 91 && gnl.buf[2] == 72) ||\
+	if ((gnl.buf[0] == 127) || (gnl.buf[0] == 12) || (gnl.buf[0] == 3) || \
+		(gnl.buf[0] == 27 && gnl.buf[1] == 91 && gnl.buf[2] == 65) || \
+		(gnl.buf[0] == 27 && gnl.buf[1] == 91 && gnl.buf[2] == 66) || \
+		(gnl.buf[0] == 27 && gnl.buf[1] == 91 && gnl.buf[2] == 67) || \
+		(gnl.buf[0] == 27 && gnl.buf[1] == 91 && gnl.buf[2] == 68) || \
+		(gnl.buf[0] == 27 && gnl.buf[1] == 91 && gnl.buf[2] == 70) || \
+		(gnl.buf[0] == 27 && gnl.buf[1] == 91 && gnl.buf[2] == 72) || \
 		(gnl.buf[0] == 4) || (gnl.buf[0] == 9))
 		return (1);
 	return (0);
@@ -42,37 +42,37 @@ void	execute_key(t_data *data, t_gnl gnl, char **line)
 		check_home(data, gnl.buf);
 }
 
-void loop_insert_char(int pos, char *dst, char *tmp, t_gnl gnl)
+void	loop_insert_char(int pos, char *dst, char *tmp, t_gnl gnl)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = 0;
-    j = 0;
-    while (tmp[i])
-    {
-        if (j == pos)
-            dst[j++] = gnl.buf[0];
+	i = 0;
+	j = 0;
+	while (tmp[i])
+	{
+		if (j == pos)
+			dst[j++] = gnl.buf[0];
 		else
 			dst[j++] = tmp[i++];
-    }
-    dst[j] = '\0';
+	}
+	dst[j] = '\0';
 }
 
-void  insert_char(t_data *data, char **line, t_gnl gnl)
+void	insert_char(t_data *data, char **line, t_gnl gnl)
 {
-    char	*dst;
-    char	*tmp;
+	char	*dst;
+	char	*tmp;
 	size_t	pos;
 
-    tmp = *line;
+	tmp = *line;
 	pos = data->pos;
 	dst = malloc(sizeof(*dst) * ft_strlen(tmp) + 2);
-    if (!dst)
-        return ;
-    loop_insert_char(data->pos, dst, tmp, gnl);
-    free(tmp);
-    *line = dst;
+	if (!dst)
+		return ;
+	loop_insert_char(data->pos, dst, tmp, gnl);
+	free(tmp);
+	*line = dst;
 	display_right(data->pos + 1, line);
 	data->pos = ft_strlen(*line);
 	while (data->pos-- > pos + 1)

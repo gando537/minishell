@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 12:12:06 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/03 15:19:00 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 01:49:46 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_hist	*create_hist(char *cmd)
 	if (!new)
 		return (NULL);
 	new->cmd = ft_strdup(cmd);
-	new->next = (struct s_hist *)NULL;
-	new->prev = (struct s_hist *)NULL;
+	new->next = (struct s_hist *) NULL;
+	new->prev = (struct s_hist *) NULL;
 	return (new);
 }
 

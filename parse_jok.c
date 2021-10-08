@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 20:28:50 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 20:41:46 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:04:14 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*parse_jok(char *str, int i)
 	int		j;
 	char	*var;
 
-	var = (char *)NULL;
+	var = (char *) NULL;
 	if ((!str[i + 1] && str[i - 1] == ' ')
 		|| (str[i - 1] == ' ' && str[i + 1] == ' '))
 		return (ft_strdup(&str[i]));
@@ -72,11 +72,11 @@ char	*reduce_bis(t_data *data, char *str)
 	joker.sub = parse_sub(joker.beg);
 	free(joker.beg);
 	if (!joker.sub)
-		return ((char *)NULL);
+		return ((char *) NULL);
 	joker.sp = ft_split(joker.sub, ' ');
 	joker.tmp1 = reduce_m(joker.sp, joker.end);
 	if (!joker.tmp1)
-		return ((char *)NULL);
+		return ((char *) NULL);
 	joker.beg = malloc(ft_strlen(str) + ft_strlen(joker.tmp1) + 1);
 	ft_strcpy(joker.beg, str);
 	str_replace(joker.beg, joker.tmp, joker.tmp1);

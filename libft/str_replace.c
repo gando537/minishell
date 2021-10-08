@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 17:24:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:56:51 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 00:56:25 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int	search_char(char *s, int c)
 	while (s[i])
 		if (s[i++] == c)
 			return (1);
-	return (0);	
+	return (0);
 }
 
 int	nbr_bis(char *str, int i, int nbre)
 {
 	while (str[i])
-    {
+	{
 		if (str[i] == '<' && str[i + 1] == '<')
 		{
 			i++;
@@ -38,7 +38,7 @@ int	nbr_bis(char *str, int i, int nbre)
 		{
 			i++;
 			++nbre;
-        }
+		}
 		else if (str[i] == '>')
 			++nbre;
 		else if (str[i] == '|')
@@ -69,7 +69,7 @@ void	str_replace_bis(char *str, char *rech, char *remp, int nbre)
 	(ft_strlen(rech) * nbre) + (ft_strlen(remp) * nbre) + 1);
 	str_cpy[0] = '\0';
 	p = str;
-	tmp = ft_strstr(p,rech);
+	tmp = ft_strstr(p, rech);
 	while (tmp != NULL)
 	{
 		ft_strncat(str_cpy, p, tmp - p);
@@ -87,10 +87,10 @@ void	str_replace(char *str, char *rech, char *remp)
 	int		nbre;
 	char	*p;
 	char	*tmp;
-    
+
 	nbre = 0;
 	p = str;
-	tmp = ft_strstr(p,rech);
+	tmp = ft_strstr(p, rech);
 	while (tmp != NULL)
 	{
 		++nbre;

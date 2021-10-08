@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 12:16:43 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:50:55 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:08:04 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*new_str(t_data *data, char *cmd_split, char *ech)
 	char	*s;
 	char	*s_nul;
 
-	s = (char *)NULL;
-	s_nul = (char *)NULL;
-	new_s = (char *)NULL;
+	s = (char *) NULL;
+	s_nul = (char *) NULL;
+	new_s = (char *) NULL;
 	tmp = ft_strjoin(ech, " ");
 	free(ech);
 	if (cmd_split[1] == '$' || cmd_split[1] == '?')
@@ -55,7 +55,7 @@ char	*ft_substr(char *str, char c)
 		}
 		i++;
 	}
-	return ((char *)NULL);
+	return ((char *) NULL);
 }
 
 char	*_variable_(t_data *data, char *cmd_split, char *ech)
@@ -63,7 +63,7 @@ char	*_variable_(t_data *data, char *cmd_split, char *ech)
 	char	*new_s;
 	char	*tmp;
 
-	new_s = (char *)NULL;
+	new_s = (char *) NULL;
 	if (cmd_split[0] == '$' && ft_strlen(cmd_split) > 1)
 		new_s = new_str(data, cmd_split, ech);
 	else

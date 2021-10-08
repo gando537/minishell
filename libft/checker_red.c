@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:44:21 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:55:13 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 00:54:57 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	bis(char **tmp, char **tmp2, int i)
 	return (0);
 }
 
-int checker_red(char **tmp, char **tmp2, char **cmd_split)
+int	checker_red(char **tmp, char **tmp2, char **cmd_split)
 {
 	char	*p;
 
@@ -86,11 +86,11 @@ int	ft_checker_cmd(char *r, char **cmd_split)
 	tmp = ft_split(r, '|');
 	while (tmp[i])
 	{
-		if (checker_cmd_bis(tmp, cmd_split, i, r) ==  1)
+		if (checker_cmd_bis(tmp, cmd_split, i, r) == 1)
 			return (1);
-		if (checker_cmd_bis(tmp, cmd_split, i, r) ==  2)
+		if (checker_cmd_bis(tmp, cmd_split, i, r) == 2)
 			break ;
-		if (checker_cmd_bis(tmp, cmd_split, i, r) ==  0)
+		if (checker_cmd_bis(tmp, cmd_split, i, r) == 0)
 			continue ;
 		i++;
 	}

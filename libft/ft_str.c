@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 17:26:13 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:55:38 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 00:59:47 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ char	*ft_strncat(char *dest, char *src, int nb)
 	return (dest);
 }
 
-char *ft_strcat(char *dest, char *src)
+char	*ft_strcat(char *dest, char *src)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (dest[i] != '\0')
@@ -69,9 +69,9 @@ char *ft_strcat(char *dest, char *src)
 	return (dest);
 }
 
-char *ft_strcpy(char *dest, char *src)
+char	*ft_strcpy(char *dest, char *src)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (src[i] != '\0')
@@ -81,44 +81,4 @@ char *ft_strcpy(char *dest, char *src)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
-
-char	*ft_strndup(const char *s, size_t n)
-{
-	char			*res;
-	unsigned int	i;
-
-    i = 0;
-    res = malloc(sizeof(char) * (n + 1));
-    if (res == NULL)
-        return (NULL);
-    while (s[i] && i < n)
-    {
-        res[i] = s[i];
-        i++;
-    }
-    res[i] = '\0';
-    return (res);
-}
-
-char	*ft_strdup(const char *src)
-{
-	int		size;
-	char	*strdp;
-	char	*p_strdp;
-
-	size = 0;
-	strdp = (char *)NULL;
-	if (!src)
-		return (strdp);
-	while (src[size])
-		size++;
-	strdp = (char *) malloc(sizeof(char) * size + 1);
-	if (!strdp)
-		return (NULL);
-	p_strdp = strdp;
-	while (*src)
-		*p_strdp++ = *src++;
-	*p_strdp = '\0';
-	return (strdp);
 }

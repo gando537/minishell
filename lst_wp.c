@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 12:10:21 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:52:39 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 01:53:57 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_fork	**list_wp(void)
 
 void	push_back(t_listenv **listenv, t_listenv *new)
 {
-	t_listenv   *p_listenv;
+	t_listenv	*p_listenv;
 
 	if (!listenv || !new)
 		return ;

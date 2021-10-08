@@ -6,13 +6,13 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:43:30 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/01 17:52:58 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 02:57:47 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Includes/minishell.h"
 
-t_cmd *loop_cmd(t_data *data, t_cmd *tmp)
+t_cmd	*loop_cmd(t_data *data, t_cmd *tmp)
 {
 	tmp = tmp->next;
 	if (tmp && (!ft_strcmp(tmp->cmd, "||") || !ft_strcmp(tmp->cmd, "&&")))
@@ -86,6 +86,6 @@ int	main(int argc, char **argv, char **envp)
 	while (1)
 		manager(data);
 	free_data(data);
-	tcsetattr(0,TCSANOW,&data->old_termios);
+	tcsetattr(0, TCSANOW, &data->old_termios);
 	return (0);
 }
