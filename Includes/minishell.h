@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:46:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 03:34:23 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 19:51:02 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,9 +171,12 @@ void		execute_key(t_data *data, t_gnl gnl, char **line);
 void		insert_char(t_data *data, char **line, t_gnl gnl);
 void		gnl_term_bis(char **line, t_gnl gnl, t_data *data);
 char		*parse_cmd(t_data *data, char *cmd);
-void		valid_red(char **cmd, t_data *data, char *tmp, int i);
+void		valid_red(char **cmd, t_data *data, int i);
 void		loop_insert_char(int pos, char *dst, char *tmp, t_gnl gnl);
 
+void		write_fd(char *s);
+void		limiter(char *str);
+void		delimiter(char **str, int i, t_data *data);
 int			builti_bis_(t_data *data, char **split);
 int			checker_builti(char *r, char **cmd_split, t_data *data);
 void		builtin_pwd_echo(t_data *data, char **cmd_split, char *r);

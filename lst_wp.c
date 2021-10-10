@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 12:10:21 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 01:53:57 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 19:45:57 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,15 @@ void	push_back(t_listenv **listenv, t_listenv *new)
 	while (p_listenv->next != NULL)
 		p_listenv = p_listenv->next;
 	p_listenv->next = new;
+}
+
+void	delimiter(char **str, int i, t_data *data)
+{
+	if (ft_strcmp(str[i], "<<") == 0 && str[i + 1])
+		limiter(str[i + 1]);
+	else if (ft_strcmp(str[i], "<<") == 0 && !str[i + 1])
+	{
+		printf("minishell: parse error near `\n'");
+		data->last_exit = 1;
+	}
 }

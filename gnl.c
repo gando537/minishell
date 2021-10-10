@@ -6,16 +6,16 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 16:20:24 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:00:53 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 19:50:36 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Includes/minishell.h"
 
-static void	write_fd(t_gnl gnl)
+void	write_fd(char *s)
 {
-	if (gnl.buf)
-		write(0, gnl.buf, 1);
+	if (s)
+		write(0, s, 1);
 }
 
 int	press_keys(t_gnl gnl, t_data *data, char **line)
@@ -45,7 +45,7 @@ int	checker_ctrl(t_gnl gnl, t_data *data, char **line)
 	i = press_keys(gnl, data, line);
 	if (!i)
 	{
-		write_fd(gnl);
+		write_fd(gnl.buf);
 		return (1);
 	}
 	else if (i == 2)

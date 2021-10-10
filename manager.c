@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:43:47 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:55:14 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/09 20:06:52 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,29 @@ static char	*manager_bis(t_data *data)
 	return (r);
 }
 
-static void	check_global(char *r)
+static void	check_global(char *r, t_data *data)
 {
 	char	**cmd_split;
+	char	**s;
+	int		i;
 
 	if (!valid_syntax(r))
 		exit (1);
-	if (search_char(r, '>'))
+	s = ft_split(r, ' ');
+	i = 0;
+	while (s[i])
 	{
-		str_replace(r, ">>", "");
-		str_replace(r, ">", "");
+		if (check_redir(s[i]) && s[i + 1])
+		{
+			delimiter(s, i, data);
+			str_replace(r, s[i], "");
+			str_replace(r, s[i + 1], "");
+			break ;
+		}
+		++i;
 	}
+	free_split(s);
 	cmd_split = ft_split(r, ' ');
-	if (check_redir(r))
-		r = redirection(r);
 	if (ft_checker_cmd(r, cmd_split))
 		exit (127);
 }
@@ -70,10 +79,13 @@ static void	manager_w(t_data *data, char *line)
 	t_fork	fork_;
 
 	fork_.childpid = fork();
+	if (check_redir(line))
+		line = redirection(line);
 	init_data(data, line);
 	if (fork_.childpid == 0)
 	{
-		check_global(line);
+		check_global(line, data);
+		data->pip = ft_split(line, '|');
 		ft_pipex(data);
 	}
 	waitpid(fork_.childpid, &(fork_.wstatus), WUNTRACED | WCONTINUED);
