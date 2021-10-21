@@ -6,7 +6,7 @@
 #    By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/21 15:57:36 by mdiallo           #+#    #+#              #
-#    Updated: 2021/10/03 14:30:42 by mdiallo          ###   ########.fr        #
+#    Updated: 2021/10/21 11:44:17 by mdiallo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
-LIB_READLINE = -L /usr/local/Cellar/readline/8.1/lib/ -I /usr/local/Cellar/readline/8.1/include/ -lncurses
+LIB_READLINE = -L /usr/local/Cellar/readline/8.1.1/lib/ -I /usr/local/Cellar/readline/8.1.1/include/ -lncurses
 
 HEADER	=	Includes/minishell.h
 

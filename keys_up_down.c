@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 09:55:18 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:21:27 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 01:30:32 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	swap_temp(t_data *data, char **line, char *temp)
 {
-	move_cursor_left(&data->pos, data->termkey->left);
+	move_cursor_left(&data->inter->pos, data->termkey->left);
 	ft_putstr_fd(data->termkey->clear, 0);
 	free(*line);
 	*line = ft_strdup(temp);
 	free(temp);
 	write(0, *line, ft_strlen(*line));
-	data->pos = ft_strlen(*line);
+	data->inter->pos = ft_strlen(*line);
 }
 
 void	check_key_down(t_data *data, char **line)
@@ -71,12 +71,12 @@ void	check_key_up(t_data *data, char **line)
 	temp = security_history_up(data);
 	if (!temp)
 		return ;
-	move_cursor_left(&data->pos, data->termkey->left);
+	move_cursor_left(&data->inter->pos, data->termkey->left);
 	ft_putstr_fd(data->termkey->clear, 0);
 	free(*line);
 	*line = ft_strdup(temp);
 	if (temp)
 		free(temp);
 	write(0, *line, ft_strlen(*line));
-	data->pos = ft_strlen(*line);
+	data->inter->pos = ft_strlen(*line);
 }

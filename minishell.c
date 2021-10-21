@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:43:30 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:57:47 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/21 11:50:26 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	free_data(t_data *data)
 {
 	free_lst(data->listenv);
 	free_lst(data->var_tmp);
+	free(data->inter);
 	free_hist(data->hist);
 	free(data);
 }
@@ -67,7 +68,7 @@ t_listenv	**init_listenv(char **envp)
 	while (envp[++i])
 	{
 		sp = ft_split(envp[i], '=');
-		new = ft_new_elm(sp[0], sp[1]);
+		new = ft_new_elm(sp[0], ft_strdup(sp[1]));
 		push_back(listenv, new);
 		free_split(sp);
 	}

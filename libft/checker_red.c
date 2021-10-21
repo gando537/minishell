@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:44:21 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/09 00:54:57 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/13 17:44:03 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,9 @@ int	checker_cmd_bis(char **tmp, char **cmd_split, int i, char *r)
 			return (2);
 		return (0);
 	}
-	if (checker_red(tmp, tmp2, cmd_split))
-		return (1);
+	if (ft_strcmp(cmd_split[0], "export") && ft_strcmp(cmd_split[0], "unset"))
+		if (checker_red(tmp, tmp2, cmd_split))
+			return (1);
 	return (4);
 }
 

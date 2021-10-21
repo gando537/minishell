@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 12:09:22 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/09 20:39:11 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/21 11:39:15 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int	get_next_line(char **line, int fd)
 void	valid_red(char **cmd, t_data *data, int i)
 {
 	if (ft_strcmp(cmd[i], ">") == 0)
-		data->o_fd = open(cmd[i + 1], O_WRONLY | O_TRUNC | O_CREAT, 0777);
+		data->inter->o_fd= open(cmd[i + 1], O_WRONLY | O_TRUNC | O_CREAT, 0777);
 	if (ft_strcmp(cmd[i], ">>") == 0)
-		data->o_fd = open(cmd[i + 1], O_WRONLY | O_APPEND | O_CREAT, 0777);
+		data->inter->o_fd= open(cmd[i + 1], O_WRONLY | O_APPEND | O_CREAT, 0777);
 }
 
 t_data	*alloc_data(void)
@@ -65,9 +65,10 @@ t_data	*alloc_data(void)
 	data = (t_data *)malloc(sizeof(t_data));
 	if (!data)
 		return (0);
-	data->last_exit = 0;
-	data->o_fd = 1;
-	data->i_fd = 0;
+	data->inter = (t_int *)malloc(sizeof(t_int));
+	data->inter->last_exit= 0;
+	data->inter->o_fd= 1;
+	data->inter->i_fd= 0;
 	data->pid_sh = ft_itoa(getppid());
 	return (data);
 }
@@ -76,7 +77,6 @@ void	limiter(char *str)
 {
 	char	*readop;
 	int		r;
-	char	*h;
 
 	while (1)
 	{

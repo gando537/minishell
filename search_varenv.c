@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 12:14:27 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:26:56 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 01:46:01 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,6 @@ size_t	len_variable(char *str)
 	}
 	return (n);
 }
-
-// int	search_value(char *str, t_listenv **env, int i)
-// {
-// 	char		*var;
-// 	size_t		n;
-// 	t_listenv	*tmp;
-
-// 	tmp = *env;
-// 	while (tmp)
-// 	{
-// 		n = len_variable(&str[i]);
-// 		var = ft_strndup(&str[i + 1], n);
-// 		if (ft_strcmp(var, tmp->name) == 0)
-// 		{
-// 			str_replace(str, "$", "");
-// 			str_replace(str, var, tmp->value);
-// 			i += ft_strlen(tmp->value);
-// 			free(var);
-// 			return (1);
-// 		}
-// 		free(var);
-// 		tmp = tmp->next;
-// 	}
-// 	return (0);
-// }
 
 char	*_var_mp(t_data *data, char *var)
 {
@@ -90,7 +65,7 @@ char	*new_str_bis(t_data *data, char *cmd_split, char *tmp, char *s_nul)
 	}
 	else if (cmd_split[1] == '?')
 	{
-		s_nul = ft_itoa(data->last_exit);
+		s_nul = ft_itoa(data->inter->last_exit);
 		tmp1 = ft_strjoin(tmp, s_nul);
 		free(tmp);
 		free(s_nul);
@@ -138,7 +113,7 @@ char	*joker_quotes(t_data *data, char *cmd)
 		if (!str)
 		{
 			printf("minishell: no matches found: %s\n", data->sub_str);
-			data->last_exit = 1;
+			data->inter->last_exit= 1;
 			free(data->sub_str);
 			return ((char *) NULL);
 		}

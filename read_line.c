@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:27:03 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:34:49 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/21 11:35:54 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,14 @@ int	check_echo(t_data *data, char **cmd_split)
 {
 	if (len_split(cmd_split) == 1)
 	{
-		write(data->o_fd, "\n", 1);
+		write(data->inter->o_fd, "\n", 1);
 		return (1);
 	}
 	if (len_split(cmd_split) == 2 && ft_strcmp(cmd_split[1], "-n") == 0)
 		return (1);
 	if (len_split(cmd_split) == 2 && ft_strcmp(cmd_split[1], "$") == 0)
 	{
-		write(data->o_fd, "\n", 1);
+		write(data->inter->o_fd, "\n", 1);
 		return (1);
 	}
 	return (0);

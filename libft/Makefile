@@ -6,13 +6,15 @@
 #    By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/21 15:57:36 by mdiallo           #+#    #+#              #
-#    Updated: 2021/10/03 14:30:50 by mdiallo          ###   ########.fr        #
+#    Updated: 2021/10/16 12:18:23 by mdiallo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
 
 CC = clang
+
+OBJ_PATH = obj
 
 CFLAGS	= -Wall -Wextra -Werror
 
@@ -25,16 +27,19 @@ HEADER	= ../Includes/libft.h
 
 OBJS	= $(SRCS:.c=.o)
 
+OBJ 	= $(addprefix $(OBJ_PATH)/,$(OBJS))
+
 all		: $(NAME)
 
-$(NAME)	: $(OBJS)
-	@ar rcs $(NAME) $(OBJS)
+$(NAME)	: $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
 
-%.o		: %.c $(HEADER)
+$(OBJ_PATH)/%.o	: %.c $(HEADER)
+	@mkdir -p $(OBJ_PATH) 2> /dev/null || 1
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
 clean	:
-	@rm -f $(OBJS)
+	@rm -rf $(OBJ_PATH) || 1
 
 fclean	:	clean 
 	@rm -f $(NAME)

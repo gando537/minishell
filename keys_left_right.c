@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 09:55:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:07:05 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 01:30:32 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	check_key_left(t_data *data)
 {
-	if (data->pos == 0)
+	if (data->inter->pos == 0)
 		return ;
 	ft_putstr_fd(data->termkey->left, 0);
-	data->pos--;
+	data->inter->pos--;
 }
 
 void	check_key_right(t_data *data, char *buf, char **line)
 {
-	if (!*line || data->pos == ft_strlen(*line))
+	if (!*line || data->inter->pos == ft_strlen(*line))
 		return ;
 	write(0, buf, 3);
-	data->pos++;
+	data->inter->pos++;
 }
 
 int	print_error(void)

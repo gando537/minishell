@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:48:03 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:14:50 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/17 13:20:31 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_cmd	**lst_cmd(char *r)
 	i = 0;
 	temp = parsing_cmd(r);
 	sp = ft_split(temp, ' ');
+	free(temp);
 	cmd = list_cmd();
 	while (sp[i])
 	{
@@ -85,11 +86,16 @@ t_cmd	**lst_cmd(char *r)
 	return (cmd);
 }
 
-int	checker_op(char *op, t_data *data)
+char	*manager_bis(t_data *data)
 {
-	if (!ft_strcmp(op, "||") && data->last_exit)
-		return (1);
-	if (!ft_strcmp(op, "&&") && data->last_exit == 0)
-		return (1);
-	return (0);
+	char	*r;
+	char	*prompt;
+
+	tputs(tgetstr("vi", NULL), 1, ft_putchar);
+	prompt = display_prompt();
+	data->prompt = prompt;
+	write(1, prompt, ft_strlen(prompt));
+	tputs(tgetstr("ve", NULL), 1, ft_putchar);
+	r = rl_gets(data, prompt);
+	return (r);
 }

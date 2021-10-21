@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 17:15:50 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:01:26 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/21 11:35:25 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	exec_over(t_data *data, t_cmdpath *compath, int i)
 {
 	check_first(data);
 	check_last(data, i);
+	if (data->inter->b|| checker_builti(data->pip[i], compath->cmd, data))
+	{
+		data->inter->last_exit= 0;
+		return ;
+	}
 	exec_cmd(data, compath);
 }
 
@@ -52,19 +57,20 @@ void	ft_pipex(t_data *data)
 	t_cmdpath	*compath;
 
 	i = -1;
-	if (data->nb_pipes)
+	if (data->inter->nb_pipes)
 		data->wp = list_wp();
 	while (data->pip[++i])
 	{
 		compath = ft_cmdpath(data->pip, i);
-		data->pid = fork();
-		if (data->nb_pipes && data->pid != 0)
-			add_waitpid(data->wp, create_wp(data->pid));
-		if (data->pid == 0)
+		data->inter->pid= fork();
+		if (data->inter->nb_pipes&& data->inter->pid!= 0)
+			add_waitpid(data->wp, create_wp(data->inter->pid));
+		if (data->inter->pid== 0)
 			exec_over(data, compath, i);
-		else if (data->pid < 0)
+		else if (data->inter->pid< 0)
 			error_fork(data);
-		data->j += 2;
+		data->inter->j += 2;
+		data->inter->n--;
 		free_cmdpath(compath);
 	}
 	closing(data);

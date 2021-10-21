@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 13:58:03 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:22:18 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/02 02:41:07 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 int	var_bis(t_listenv *tmp, char *name, char *value)
 {
-	int	i;
-
-	i = 0;
 	if (ft_strcmp(tmp->name, name) == 0)
 	{
 		free(tmp->value);
-		tmp->value = ft_strdup(value);
-		i = 1;
+		tmp->value = value;
+		return (1);
 	}
-	return (i);
+	return (0);
 }
 
 char	*parse_value(t_data *data, char *value)
@@ -35,8 +32,9 @@ char	*parse_value(t_data *data, char *value)
 
 	s = (char *) NULL;
 	substr = ft_substr(value, '$');
-	if (substr)
-		s = _var_mp(data, substr + 1);
+	if (!substr)
+		return (ft_strdup(value));
+	s = _var_mp(data, substr + 1);
 	new_val = malloc(ft_strlen(value) + ft_strlen(s) + 1);
 	j = -1;
 	while (value[++j])
@@ -56,21 +54,19 @@ void	add_var(t_data *data, t_listenv **listenv, char *name, char *value)
 
 	i = 0;
 	new_val = parse_value(data, value);
-	if (*listenv != NULL)
+	tmp = *listenv;
+	while (tmp != NULL)
 	{
-		tmp = *listenv;
-		while (tmp != NULL)
-		{
-			i = var_bis(tmp, name, new_val);
-			tmp = tmp->next;
-		}
+		i = var_bis(tmp, name, new_val);
+		if (i)
+			break ;
+		tmp = tmp->next;
 	}
 	if (i == 0)
 	{
 		new = ft_new_elm(name, new_val);
 		push_back(listenv, new);
 	}
-	free(new_val);
 }
 
 void	pop_var_bis(t_listenv *curr, char *name)

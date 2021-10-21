@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:15:49 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:39:00 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 01:30:32 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,16 @@ void	insert_char(t_data *data, char **line, t_gnl gnl)
 	size_t	pos;
 
 	tmp = *line;
-	pos = data->pos;
+	pos = data->inter->pos;
 	dst = malloc(sizeof(*dst) * ft_strlen(tmp) + 2);
 	if (!dst)
 		return ;
-	loop_insert_char(data->pos, dst, tmp, gnl);
+	loop_insert_char(data->inter->pos, dst, tmp, gnl);
 	free(tmp);
 	*line = dst;
-	display_right(data->pos + 1, line);
-	data->pos = ft_strlen(*line);
-	while (data->pos-- > pos + 1)
+	display_right(data->inter->pos + 1, line);
+	data->inter->pos = ft_strlen(*line);
+	while (data->inter->pos-- > pos + 1)
 		ft_putstr_fd(data->termkey->left, 0);
 }
 
@@ -85,7 +85,7 @@ void	gnl_term_bis(char **line, t_gnl gnl, t_data *data)
 	char	*tmp;
 
 	i = -1;
-	if (data->pos == ft_strlen(*line))
+	if (data->inter->pos == ft_strlen(*line))
 	{
 		if (*line)
 			gnl.l = ft_strlen(*line) + 2;
@@ -100,5 +100,5 @@ void	gnl_term_bis(char **line, t_gnl gnl, t_data *data)
 	}
 	else
 		insert_char(data, line, gnl);
-	data->pos++;
+	data->inter->pos++;
 }

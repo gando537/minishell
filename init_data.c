@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 12:06:15 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/09 20:08:01 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/21 11:34:45 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	input_file(char **cmd, t_data *data)
 {
 	int		i;
 
-	data->in = 1;
+	data->inter->in= 1;
 	if (len_split(cmd) <= 1)
 		return ;
 	i = 0;
 	while (cmd[i] && ft_strcmp(cmd[i], "<"))
 		++i;
 	if (cmd[i] && cmd[i + 1])
-		data->i_fd = open(cmd[i + 1], O_RDONLY);
+		data->inter->i_fd= open(cmd[i + 1], O_RDONLY);
 }
 
 void	output_file(char **cmd, t_data *data)
@@ -69,16 +69,17 @@ void	init_data(t_data *data, char *r)
 	if (ft_strlen(r) == 0)
 		return ;
 	cmd = ft_split(r, ' ');
-	data->in = 0;
+	data->inter->in= 0;
 	if (search_str(cmd, "<"))
 		input_file(cmd, data);
-	data->o_fd = 1;
+	data->inter->o_fd= 1;
 	if (search_str(cmd, ">") || search_str(cmd, ">>"))
 		output_file(cmd, data);
 	data->pip = ft_split(r, '|');
-	data->nb_pipes = len_split(data->pip) - 1;
-	data->my_pipes = creat_pipe(data->nb_pipes);
-	data->j = 0;
+	data->inter->nb_pipes= len_split(data->pip) - 1;
+	data->inter->n= data->inter->nb_pipes;
+	data->my_pipes = creat_pipe(data->inter->nb_pipes);
+	data->inter->j = 0;
 	free_split(cmd);
 	free_split(data->pip);
 }

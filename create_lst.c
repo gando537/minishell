@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 12:07:28 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 01:42:16 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/02 01:57:43 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_listenv	*ft_new_elm(char *name, char *value)
 	if (!new_maillon)
 		return (NULL);
 	new_maillon->name = ft_strdup(name);
-	new_maillon->value = ft_strdup(value);
+	new_maillon->value = value;
 	new_maillon->next = (struct s_listenv *) NULL;
 	return (new_maillon);
 }

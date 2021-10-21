@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:46:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/09 19:51:02 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 01:40:23 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,23 +88,30 @@ typedef struct s_cmd
 	struct s_cmd	*next;
 }t_cmd;
 
+typedef struct s_int
+{
+	int		j;
+	int		b;
+	int		in;
+	int		out;
+	int		n;
+	pid_t	pid;
+	int		i_fd;
+	int		o_fd;
+	size_t	pos;
+	int		nb_pipes;
+	int		last_exit;
+}t_int;
+
 typedef struct s_data
 {
 	int				*status;
-	int				j;
-	int				in;
-	int				i_fd;
-	int				o_fd;
-	int				last_exit;
-	int				len_prompt;
-	pid_t			pid;
-	int				nb_pipes;
+	t_int			*inter;
 	int				*my_pipes;
 	char			**pip;
 	char			*pid_sh;
 	char			*prompt;
 	char			*sub_str;
-	size_t			pos;
 	t_cmd			**cmd;
 	t_hist			**hist;
 	t_hist			*hist_curr_up;
@@ -146,6 +153,7 @@ void		free_lst(t_listenv **lst);
 void		free_data(t_data *data);
 void		free_hist(t_hist **hist);
 size_t		len_variable(char *str);
+void		free_lst_cmd(t_cmd **lst);
 
 void		check_key_up(t_data *data, char **line);
 void		check_key_down(t_data *data, char **line);
@@ -164,9 +172,7 @@ t_cmd		*create_cmd(char *cmd);
 int			checker_op(char *op, t_data *data);
 void		add_cmd(t_cmd **cmd, t_cmd *new);
 
-t_listenv	**init_listenv(char **envp);
 int			cheker_keys(t_gnl gnl);
-void		printer_env(t_listenv **listenv);
 void		execute_key(t_data *data, t_gnl gnl, char **line);
 void		insert_char(t_data *data, char **line, t_gnl gnl);
 void		gnl_term_bis(char **line, t_gnl gnl, t_data *data);
@@ -190,10 +196,13 @@ char		*parse_jok(char *str, int i);
 char		*reduce_bis(t_data *data, char *str);
 char		*rm_quotes(char *cmd);
 
+char		*manager_bis(t_data *data);
 void		gand(char *s, t_data *data);
 int			ft_chdir(char *r);
+void		free_var(char *tmp, char *l);
 int			builtin_pwd(void);
 char		*dup_key(char *buf);
+void		pop_redir(t_data *data, char **s, char *r, int i);
 int			var_bis(t_listenv *tmp, char *name, char *value);
 int			search_vari(t_data *data, char **split);
 char		*_var_mp(t_data *data, char *var);

@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 12:23:22 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:57:02 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/21 11:33:21 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	check_first(t_data *data)
 {
-	if (data->j != 0)
+	if (data->inter->j != 0)
 	{
-		if (dup2(data->my_pipes[data->j - 2], 0) < 0)
+		if (dup2(data->my_pipes[data->inter->j - 2], 0) < 0)
 		{
 			all_free(data);
 			perror("dup2");
 			exit(1);
 		}
 	}
-	else if (data->j == 0 && data->in == 1)
+	else if (data->inter->j == 0 && data->inter->in== 1)
 	{
 		close(0);
-		if (dup(data->i_fd) < 0)
+		if (dup(data->inter->i_fd) < 0)
 		{
 			all_free(data);
 			perror("dup");
@@ -37,9 +37,9 @@ void	check_first(t_data *data)
 
 void	check_last(t_data *data, int i)
 {
-	if (data->nb_pipes != i)
+	if (data->inter->nb_pipes!= i)
 	{
-		if (dup2(data->my_pipes[data->j + 1], 1) < 0)
+		if (dup2(data->my_pipes[data->inter->j + 1], 1) < 0)
 		{
 			all_free(data);
 			perror("dup2");
@@ -48,7 +48,7 @@ void	check_last(t_data *data, int i)
 	}
 	else
 	{
-		if (dup2(data->o_fd, 1) < 0)
+		if (dup2(data->inter->o_fd, 1) < 0)
 		{
 			all_free(data);
 			perror("dup2");
@@ -69,7 +69,7 @@ void	exec_cmd(t_data *data, t_cmdpath *compath)
 	int	i;
 
 	i = 0;
-	while (i < 2 * data->nb_pipes)
+	while (i < 2 * data->inter->nb_pipes)
 	{
 		close(data->my_pipes[i]);
 		i++;
@@ -93,12 +93,12 @@ void	close_wait(t_data *data)
 	t_fork	*tmp;
 
 	k = 0;
-	while (k < 2 * data->nb_pipes)
+	while (k < 2 * data->inter->nb_pipes)
 	{
 		close(data->my_pipes[k]);
 		k++;
 	}
-	if (data->nb_pipes == 0)
+	if (data->inter->nb_pipes== 0)
 	{
 		wait(data->status);
 		free_split(data->pip);

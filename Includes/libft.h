@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:46:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 03:33:54 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/13 07:55:50 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ char		*parse_r(char *r);
 char		*stripwhite(char *string);
 int			checker_path(char *p_r);
 
-int			check_redir(char *r);
 int			replace_in(char *s, int i);
 int			replace_inin(char *s, int i);
 int			replace_out(char *s, int i);

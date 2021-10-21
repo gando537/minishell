@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:28:23 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/09 00:57:49 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 01:23:31 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ char	*redirection(char *r)
 
 	nb = ft_nbre(r);
 	new_r = ft_strndup(r, ft_strlen(r) + (nb * 2));
-	free(r);
 	i = 0;
 	while (new_r[i])
 	{

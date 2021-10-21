@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:40:48 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:22:32 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/21 11:34:01 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,13 @@ int	search_vari(t_data *data, char **split)
 		i++;
 	}
 	return (j);
+}
+
+int	checker_op(char *op, t_data *data)
+{
+	if (!ft_strcmp(op, "||") && data->inter->last_exit)
+		return (1);
+	if (!ft_strcmp(op, "&&") && data->inter->last_exit== 0)
+		return (1);
+	return (0);
 }

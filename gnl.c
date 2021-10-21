@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 16:20:24 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/09 19:50:36 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/01/01 01:30:32 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	gnl_term(char **line, int fd, t_data *data)
 	*line = malloc(gnl.l);
 	gnl.buf = malloc(sizeof(char) * 3 + 1);
 	(*line)[0] = 0;
-	data->pos = 0;
+	data->inter->pos = 0;
 	gnl.r = read(fd, gnl.buf, 3);
 	if (!checker_ctrl(gnl, data, line))
 		return ;
