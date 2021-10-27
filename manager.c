@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:43:47 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/21 11:48:32 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/27 20:37:57 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	check_global(char *r, t_data *data)
 	}
 	free_split(s);
 	cmd_split = ft_split(r, ' ');
-	if (data->inter->b!= 2)
+	if (data->inter->b != 2)
 		if (ft_checker_cmd(r, cmd_split))
 			exit (127);
 }
@@ -81,7 +81,7 @@ static void	manager_w(t_data *data, char *line)
 		if (child(data, line, tmp))
 			exit(1);
 	waitpid(fork_.childpid, &(fork_.wstatus), WUNTRACED | WCONTINUED);
-	data->inter->last_exit= WEXITSTATUS(fork_.wstatus);
+	data->inter->last_exit = WEXITSTATUS(fork_.wstatus);
 }
 
 void	manager(t_data *data)

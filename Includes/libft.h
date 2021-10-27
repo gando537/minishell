@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:46:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/13 07:55:50 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/27 20:40:11 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void		ft_putstr_fd(char *s, int fd);
 void		ft_cpy(char *beg, char *end, char *src);
 void		str_replace(char *str, char *rech, char *remp);
 
+void		print_banner(void);
 int			ft_nbre(char *str);
 char		*ft_pos(char *name, char *sub_str);
 char		*parse_sub(char *sub_str);
@@ -76,7 +77,6 @@ char		*reduce_m(char **sp, char *end);
 
 void		move_cursor_left(size_t *s, char *left);
 size_t		get_non_escaped(char *str, size_t i, char *sep);
-size_t		get_non_escaped2(char *str, size_t i, char *sep);
 int			is_first_char(char *str, char *set);
 int			is_last_char(char *str, char *set);
 size_t		find_char(char *s, char c);

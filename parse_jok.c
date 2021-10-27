@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 20:28:50 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 02:04:14 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/27 19:03:52 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,38 @@ char	*reduce_bis(t_data *data, char *str)
 	ft_strcpy(joker.beg, str);
 	str_replace(joker.beg, joker.tmp, joker.tmp1);
 	return (joker.beg);
+}
+
+int	calcul_flag(char *str, int i, int flag)
+{
+	if (str[i] == '\'' && (i == 0 || str[i - 1] != '\\'))
+		flag++;
+	else if (str[i] == '\'' && str[i - 1] != '\\' && flag == 0)
+		flag--;
+	return (flag);
+}
+
+char	*replace_value(t_data *data, char *line)
+{
+	char	*tmp;
+	char	*str;
+	int		i;
+	int		flag;
+
+	str = line;
+	i = -1;
+	tmp = (char *) NULL;
+	flag = 0;
+	while (str[++i])
+	{
+		flag = calcul_flag(str, i, flag);
+		if (str[i] == '$' && flag == 0)
+		{
+			str = parse_value(data, str, 0);
+			if (tmp)
+				free(tmp);
+			tmp = str;
+		}
+	}
+	return (str);
 }

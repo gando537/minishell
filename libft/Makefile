@@ -6,7 +6,7 @@
 #    By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/21 15:57:36 by mdiallo           #+#    #+#              #
-#    Updated: 2021/10/16 12:18:23 by mdiallo          ###   ########.fr        #
+#    Updated: 2021/10/24 13:55:26 by mdiallo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJ_PATH = obj
 
 CFLAGS	= -Wall -Wextra -Werror
 
-SRCS	=	free_str.c ft_str2.c joker_bis.c root.c\
+SRCS	=	free_str.c ft_str2.c joker_bis.c root.c banner.c\
 			checker_red.c ft_split.c ft_str3.c str_replace.c\
 			create_pip.c ft_str.c get_path.c replace_1.c utils.c\
 			display.c ft_str1.c joker.c replace_2.c joker_parse.c

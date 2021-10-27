@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 17:15:50 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/21 11:35:25 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/27 20:45:17 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	exec_over(t_data *data, t_cmdpath *compath, int i)
 {
 	check_first(data);
 	check_last(data, i);
-	if (data->inter->b|| checker_builti(data->pip[i], compath->cmd, data))
+	if (data->inter->b || checker_builti(compath->str, compath->cmd, data))
 	{
-		data->inter->last_exit= 0;
+		data->inter->last_exit = 0;
 		return ;
 	}
 	exec_cmd(data, compath);
@@ -31,14 +31,15 @@ void	free_cmdpath(t_cmdpath *compath)
 	free(compath);
 }
 
-t_cmdpath	*ft_cmdpath(char **pip, int i)
+t_cmdpath	*ft_cmdpath(t_data *data, int i)
 {
 	t_cmdpath	*compath;
 
 	compath = malloc(sizeof(t_cmdpath));
 	if (!compath)
 		return (NULL);
-	compath->cmd = ft_split(pip[i], ' ');
+	compath->str = replace_value(data, data->pip[i]);
+	compath->cmd = ft_split(compath->str, ' ');
 	compath->path = get_path(compath->cmd[0]);
 	return (compath);
 }
@@ -61,13 +62,13 @@ void	ft_pipex(t_data *data)
 		data->wp = list_wp();
 	while (data->pip[++i])
 	{
-		compath = ft_cmdpath(data->pip, i);
-		data->inter->pid= fork();
-		if (data->inter->nb_pipes&& data->inter->pid!= 0)
+		compath = ft_cmdpath(data, i);
+		data->inter->pid = fork();
+		if (data->inter->nb_pipes && data->inter->pid != 0)
 			add_waitpid(data->wp, create_wp(data->inter->pid));
-		if (data->inter->pid== 0)
+		if (data->inter->pid == 0)
 			exec_over(data, compath, i);
-		else if (data->inter->pid< 0)
+		else if (data->inter->pid < 0)
 			error_fork(data);
 		data->inter->j += 2;
 		data->inter->n--;

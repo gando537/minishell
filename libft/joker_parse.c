@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 20:22:46 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/09 00:53:29 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/27 20:41:21 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*rm_quotes(char *cmd)
 	while (split[i])
 	{
 		str = malloc(ft_strlen(split[i]) + 3);
-		strcpy_no_quotes(split[i], str);
+		ft_strcpy(str, split[i]);
 		if (split[i + 1])
 			str = replace_pipe(str);
 		tmp = new_str;

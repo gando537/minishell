@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:57:59 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/09 00:47:45 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/22 20:05:12 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,33 +33,6 @@ size_t	get_non_escaped(char *str, size_t i, char *sep)
 			--sq;
 		if (ft_isinset(str[i], sep) && (i == 0 || str[i - 1] != '\\')
 			&& sq == 0 && dq == 0)
-			return (i);
-		++i;
-	}
-	return (i);
-}
-
-size_t	get_non_escaped2(char *str, size_t i, char *sep)
-{
-	int	sq;
-	int	dq;
-
-	sq = 0;
-	dq = 0;
-	while (str[i])
-	{
-		if (str[i] == '"' && (i == 0 || str[i - 1] != '\\')
-			&& dq == 0 && sq == 0)
-			++dq;
-		else if (str[i] == '"' && (i == 0 || str[i - 1] != '\\') && dq == 1)
-			--dq;
-		if (str[i] == '\'' && (i == 0 || str[i - 1] != '\\')
-			&& sq == 0 && dq == 0)
-			++sq;
-		else if (str[i] == '\'' && (i == 0 || str[i - 1] != '\\') && sq == 1)
-			--sq;
-		if (ft_isinset(str[i], sep) && (i == 0 || str[i - 1] != '\\')
-			&& sq == 0)
 			return (i);
 		++i;
 	}

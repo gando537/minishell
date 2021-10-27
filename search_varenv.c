@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 12:14:27 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 01:46:01 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/27 20:34:24 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,27 @@
 
 size_t	len_variable(char *str)
 {
-	int		j;
 	size_t	n;
 
-	j = 0;
 	n = 0;
-	while (str[j] && str[j] != ' ')
-	{
+	while (str[n] && str[n] != ' ')
 		++n;
-		++j;
-	}
 	return (n);
 }
 
-char	*_var_mp(t_data *data, char *var)
+char	*_var_mp(t_data *data, char *var, int t)
 {
 	t_listenv	*tmp;
 
-	tmp = *(data->listenv);
-	while (tmp)
+	if (t)
 	{
-		if (ft_strcmp(tmp->name, var) == 0)
-			return (tmp->value);
-		tmp = tmp->next;
+		tmp = *(data->listenv);
+		while (tmp)
+		{
+			if (ft_strcmp(tmp->name, var) == 0)
+				return (tmp->value);
+			tmp = tmp->next;
+		}
 	}
 	tmp = *(data->var_tmp);
 	while (tmp)
@@ -59,7 +57,7 @@ char	*new_str_bis(t_data *data, char *cmd_split, char *tmp, char *s_nul)
 	{
 		tmp1 = ft_strjoin(tmp, data->pid_sh);
 		free(tmp);
-		s = _var_mp(data, cmd_split + 2);
+		s = _var_mp(data, cmd_split + 2, 1);
 		if (!s)
 			return (ft_strjoin(tmp1, cmd_split + 2));
 	}
@@ -69,7 +67,7 @@ char	*new_str_bis(t_data *data, char *cmd_split, char *tmp, char *s_nul)
 		tmp1 = ft_strjoin(tmp, s_nul);
 		free(tmp);
 		free(s_nul);
-		s = _var_mp(data, cmd_split + 2);
+		s = _var_mp(data, cmd_split + 2, 1);
 		if (!s)
 			return (ft_strjoin(tmp1, cmd_split + 2));
 	}
@@ -113,7 +111,7 @@ char	*joker_quotes(t_data *data, char *cmd)
 		if (!str)
 		{
 			printf("minishell: no matches found: %s\n", data->sub_str);
-			data->inter->last_exit= 1;
+			data->inter->last_exit = 1;
 			free(data->sub_str);
 			return ((char *) NULL);
 		}

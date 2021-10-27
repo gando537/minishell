@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:43:30 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/21 11:50:26 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/24 14:04:45 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,10 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
+	clear_sc();
+	print_banner();
 	chdir(getenv("HOME"));
 	data = get_shell(envp);
-	clear_sc();
 	while (1)
 		manager(data);
 	free_data(data);

@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 13:58:03 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/02 02:41:07 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/27 19:25:11 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	var_bis(t_listenv *tmp, char *name, char *value)
 	return (0);
 }
 
-char	*parse_value(t_data *data, char *value)
+char	*parse_value(t_data *data, char *value, int t)
 {
 	int		j;
 	char	*s;
@@ -34,7 +34,10 @@ char	*parse_value(t_data *data, char *value)
 	substr = ft_substr(value, '$');
 	if (!substr)
 		return (ft_strdup(value));
-	s = _var_mp(data, substr + 1);
+	if (t)
+		s = _var_mp(data, substr + 1, t);
+	else
+		s = _var_mp(data, substr, t);
 	new_val = malloc(ft_strlen(value) + ft_strlen(s) + 1);
 	j = -1;
 	while (value[++j])
@@ -53,7 +56,7 @@ void	add_var(t_data *data, t_listenv **listenv, char *name, char *value)
 	int			i;
 
 	i = 0;
-	new_val = parse_value(data, value);
+	new_val = parse_value(data, value, 1);
 	tmp = *listenv;
 	while (tmp != NULL)
 	{

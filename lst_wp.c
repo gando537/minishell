@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 12:10:21 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 01:35:45 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/27 20:30:05 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ void	delimiter(char **str, int i, t_data *data)
 	else if (ft_strcmp(str[i], "<<") == 0 && !str[i + 1])
 	{
 		printf("minishell: parse error near `\n'");
-		data->inter->last_exit= 1;
+		data->inter->last_exit = 1;
 	}
 }

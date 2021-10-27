@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:40:48 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/21 11:34:01 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/27 20:36:38 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ void	gand(char *s, t_data *data)
 {
 	char		**split;
 	t_listenv	*tmp;
+	char		*p_s;
 
 	if (search_char(s, '='))
 	{
 		split = ft_split(s, '=');
-		add_var(data, data->listenv, split[0], split[1]);
+		p_s = replace_value(data, split[1]);
+		add_var(data, data->listenv, split[0], p_s);
 		free_split(split);
 		return ;
 	}
@@ -69,7 +71,7 @@ int	checker_op(char *op, t_data *data)
 {
 	if (!ft_strcmp(op, "||") && data->inter->last_exit)
 		return (1);
-	if (!ft_strcmp(op, "&&") && data->inter->last_exit== 0)
+	if (!ft_strcmp(op, "&&") && data->inter->last_exit == 0)
 		return (1);
 	return (0);
 }

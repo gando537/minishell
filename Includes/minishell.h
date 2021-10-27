@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:46:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 01:40:23 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/27 20:40:41 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_cmdpath
 {
 	char			**cmd;
 	char			*path;
+	char			*str;
 }t_cmdpath;
 
 typedef struct s_gnl
@@ -117,6 +118,7 @@ typedef struct s_data
 	t_hist			*hist_curr_up;
 	t_hist			*hist_curr_down;
 	t_listenv		**listenv;
+	t_listenv		**varquote;
 	t_listenv		**var_tmp;
 	t_trmkey		*termkey;
 	t_fork			**wp;
@@ -154,6 +156,8 @@ void		free_data(t_data *data);
 void		free_hist(t_hist **hist);
 size_t		len_variable(char *str);
 void		free_lst_cmd(t_cmd **lst);
+int			invalid_quote(char *str);
+void		quotes_(t_data *data, char *line_read);
 
 void		check_key_up(t_data *data, char **line);
 void		check_key_down(t_data *data, char **line);
@@ -196,16 +200,20 @@ char		*parse_jok(char *str, int i);
 char		*reduce_bis(t_data *data, char *str);
 char		*rm_quotes(char *cmd);
 
+int			calcul_flag(char *str, int i, int flag);
 char		*manager_bis(t_data *data);
 void		gand(char *s, t_data *data);
 int			ft_chdir(char *r);
 void		free_var(char *tmp, char *l);
 int			builtin_pwd(void);
 char		*dup_key(char *buf);
+int			get_next_line(char **line, int fd);
 void		pop_redir(t_data *data, char **s, char *r, int i);
 int			var_bis(t_listenv *tmp, char *name, char *value);
 int			search_vari(t_data *data, char **split);
-char		*_var_mp(t_data *data, char *var);
+char		*replace_value(t_data *data, char *line);
+char		*parse_value(t_data *data, char *value, int t);
+char		*_var_mp(t_data *data, char *var, int t);
 char		*rl_gets(t_data *data, char *prompt);
 char		*ft_substr(char *str, char c);
 t_cmd		*loop_cmd(t_data *data, t_cmd *tmp);

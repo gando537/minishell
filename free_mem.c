@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 16:59:30 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 01:35:12 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/27 20:36:19 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void	free_wp(t_fork **wp)
 void	all_free(t_data *data)
 {
 	free(data->my_pipes);
-	data->inter->in= 0;
-	data->inter->nb_pipes= 0;
-	data->inter->o_fd= 1;
-	data->inter->i_fd= 0;
+	data->inter->in = 0;
+	data->inter->nb_pipes = 0;
+	data->inter->o_fd = 1;
+	data->inter->i_fd = 0;
 	data->inter->j = 0;
 }
 

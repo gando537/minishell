@@ -6,7 +6,7 @@
 #    By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/21 15:57:36 by mdiallo           #+#    #+#              #
-#    Updated: 2021/10/21 11:44:17 by mdiallo          ###   ########.fr        #
+#    Updated: 2021/10/26 11:01:24 by mdiallo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 QUNUSED = -Qunused-arguments
 
 SRC_NAME =  gnl.c  			  keys_up_down.c    search_varenv.c\
-			backspace.c       gnl_bis.c         move_cursor.c\
+			backspace.c       gnl_bis.c         move_cursor.c     quotes.c\
 			builti.c          history.c         lst_wp.c		  parse_jok.c\
 			checker_pip.c     inidata_bis.c     manager.c         var_bis.c\
 			create_lst.c      init_data.c       manager_bis.c     parse.c\

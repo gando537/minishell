@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 09:57:27 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/01/01 01:32:45 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/27 20:31:49 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void	free_var(char *tmp, char *l)
 void	pop_redir(t_data *data, char **s, char *r, int i)
 {
 	delimiter(s, i, data);
-	data->inter->out= 0;
+	data->inter->out = 0;
 	if (ft_isinset('>', r))
-		data->inter->out= 1;
+		data->inter->out = 1;
 	str_replace(r, s[i], "");
 	str_replace(r, s[i + 1], "");
 }

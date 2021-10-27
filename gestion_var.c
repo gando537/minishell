@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 12:16:43 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/13 07:24:53 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/27 19:00:41 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ char	*new_str(t_data *data, char *cmd_split, char *ech)
 	s_nul = (char *) NULL;
 	new_s = (char *) NULL;
 	tmp = ft_strjoin(ech, " ");
-	free(ech);
+	if (ech)
+		free(ech);
 	if (cmd_split[1] == '$' || cmd_split[1] == '?')
 		return (new_str_bis(data, cmd_split, tmp, s_nul));
-	s = _var_mp(data, cmd_split + 1);
+	s = _var_mp(data, cmd_split + 1, 1);
 	if (s)
 		new_s = ft_strjoin(tmp, s);
 	else
@@ -39,13 +40,16 @@ char	*ft_substr(char *str, char c)
 {
 	int		i;
 	int		j;
+	int		flag;
 	char	*sub_str;
 
 	i = 0;
+	flag = 0;
 	sub_str = malloc(sizeof(char) * ft_strlen(str) + 1);
 	while (str[i])
 	{
-		if (str[i] == c)
+		flag = calcul_flag(str, i, flag);
+		if (str[i] == c && flag == 0)
 		{
 			j = -1;
 			while (str[i] && str[i] != ' ')
@@ -55,6 +59,7 @@ char	*ft_substr(char *str, char c)
 		}
 		i++;
 	}
+	free(sub_str);
 	return ((char *) NULL);
 }
 
