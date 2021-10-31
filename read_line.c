@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:27:03 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/27 17:31:31 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/31 23:17:34 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*rl_gets(t_data *data, char *prompt)
 		printf("minishell : invalid syntax\n");
 		return ((char *) NULL);
 	}
-	quotes_(data, line_read);
+	line_read = quotes_(data, line_read);
 	return (line_read);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 13:58:03 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/27 19:25:11 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/31 14:18:52 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ void	add_var(t_data *data, t_listenv **listenv, char *name, char *value)
 	int			i;
 
 	i = 0;
-	new_val = parse_value(data, value, 1);
+	if (*(name + 1) != '\'')
+		new_val = parse_value(data, value, 1);
+	else
+		new_val = ft_strdup(value);
 	tmp = *listenv;
 	while (tmp != NULL)
 	{

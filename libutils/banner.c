@@ -6,11 +6,11 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 13:54:02 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/27 20:44:02 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/29 17:16:25 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/libft.h"
+#include "../Includes/libutils.h"
 
 void	get_next_line_b(char **line, char *tmp, int l, char c)
 {

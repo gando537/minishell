@@ -6,11 +6,11 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:29:42 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/09 00:57:00 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/29 17:12:39 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/libft.h"
+#include "../Includes/libutils.h"
 
 char	*search_path(char **paths, char *cmd)
 {

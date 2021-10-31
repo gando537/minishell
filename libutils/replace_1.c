@@ -6,11 +6,11 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:28:18 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/17 12:59:10 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/29 17:12:39 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/libft.h"
+#include "../Includes/libutils.h"
 
 int	check_redir(char *r)
 {

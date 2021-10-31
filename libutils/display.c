@@ -6,11 +6,11 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:05:21 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/24 14:04:32 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/29 17:12:39 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/libft.h"
+#include "../Includes/libutils.h"
 
 void	replace_escap(char *s)
 {

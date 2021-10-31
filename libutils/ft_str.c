@@ -6,11 +6,11 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 17:26:13 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/09 01:03:53 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/29 17:12:39 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/libft.h"
+#include "../Includes/libutils.h"
 
 char	*ft_strstr(char *str, char *to_find)
 {

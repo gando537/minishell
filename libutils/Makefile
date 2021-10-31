@@ -6,11 +6,11 @@
 #    By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/21 15:57:36 by mdiallo           #+#    #+#              #
-#    Updated: 2021/10/24 13:55:26 by mdiallo          ###   ########.fr        #
+#    Updated: 2021/10/29 17:21:25 by mdiallo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libft.a
+NAME	= libutils.a
 
 CC = clang
 
@@ -23,7 +23,7 @@ SRCS	=	free_str.c ft_str2.c joker_bis.c root.c banner.c\
 			create_pip.c ft_str.c get_path.c replace_1.c utils.c\
 			display.c ft_str1.c joker.c replace_2.c joker_parse.c
 
-HEADER	= ../Includes/libft.h
+HEADER	= ../Includes/libutils.h
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -45,5 +45,3 @@ fclean	:	clean
 	@rm -f $(NAME)
 
 re		:	fclean all
-
-

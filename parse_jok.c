@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 20:28:50 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/27 19:03:52 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/29 18:36:10 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ char	*replace_value(t_data *data, char *line)
 	flag = 0;
 	while (str[++i])
 	{
-		flag = calcul_flag(str, i, flag);
+		if (str[i] == '\'')
+			flag = calcul_flag(str, i, flag);
 		if (str[i] == '$' && flag == 0)
 		{
 			str = parse_value(data, str, 0);

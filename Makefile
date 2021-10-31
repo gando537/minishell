@@ -6,7 +6,7 @@
 #    By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/21 15:57:36 by mdiallo           #+#    #+#              #
-#    Updated: 2021/10/26 11:01:24 by mdiallo          ###   ########.fr        #
+#    Updated: 2021/10/29 17:16:35 by mdiallo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,10 +41,10 @@ HEADER	=	Includes/minishell.h
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -C libft/
-	@echo "libft compilation done..."
+	@make -C libutils/
+	@echo "libutils compilation done..."
 	@echo $(NAME) ": Sources compiling..."
-	@$(CC) $(CFLAGS) $(LIB_READLINE) $^ -o $@ -Llibft/ -lft
+	@$(CC) $(CFLAGS) $(LIB_READLINE) $^ -o $@ -Llibutils/ -lutils
 	@echo "Executable "$(NAME)" made"
 
 $(OBJ_PATH)/%.o: %.c  $(HEADER)
@@ -53,12 +53,12 @@ $(OBJ_PATH)/%.o: %.c  $(HEADER)
 
 clean:
 	@rm -rf $(OBJ_PATH) || 1
-	@make clean -C libft/
+	@make clean -C libutils/
 	@echo "$(OBJ_PATH) supprimé !"
 
 fclean: clean
 	@rm -f $(NAME)
-	@make fclean -C libft/
+	@make fclean -C libutils/
 	@echo "Executable de "$(NAME)" supprimé !"
 
 re: fclean all

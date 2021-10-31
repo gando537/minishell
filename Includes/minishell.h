@@ -6,14 +6,14 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:46:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/27 20:40:41 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/31 23:16:49 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "libft.h"
+# include "libutils.h"
 
 typedef struct s_cmdpath
 {
@@ -157,7 +157,7 @@ void		free_hist(t_hist **hist);
 size_t		len_variable(char *str);
 void		free_lst_cmd(t_cmd **lst);
 int			invalid_quote(char *str);
-void		quotes_(t_data *data, char *line_read);
+char		*quotes_(t_data *data, char *line_read);
 
 void		check_key_up(t_data *data, char **line);
 void		check_key_down(t_data *data, char **line);

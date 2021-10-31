@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 10:57:54 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/27 20:35:50 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/10/31 23:19:21 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	invalid_quote(char *str)
 	return (dq + sq);
 }
 
-void	double_quotes_(t_data *data, char *line_read, int i, char *value)
+void	double_quotes_(t_data *data, char *line_read, int *i, char *value)
 {
 	int		j;
 	char	*name;
@@ -48,14 +48,15 @@ void	double_quotes_(t_data *data, char *line_read, int i, char *value)
 
 	j = 0;
 	value = (char *)malloc(sizeof(char) * ft_strlen(line_read) + 1);
-	while (line_read[++i] && (line_read[i] != '"' || line_read[i] == '\\'))
-		value[j++] = line_read[i];
+	while (line_read[++*i] && (line_read[*i] != '"' || line_read[*i - 1] == '\\'))
+		value[j++] = line_read[*i];
 	value[j] = '\0';
-	name = ft_itoa(getpid() + i);
+	name = ft_itoa(getpid() + *i);
 	tmp = ft_strjoin("$", name);
 	free(name);
 	add_var(data, data->var_tmp, tmp, value);
 	tmp1 = ft_strjoin("\"", value);
+	free(value);
 	tmp2 = ft_strjoin(tmp1, "\"");
 	free(tmp1);
 	str_replace(line_read, tmp2, tmp);
@@ -63,7 +64,7 @@ void	double_quotes_(t_data *data, char *line_read, int i, char *value)
 	free(tmp);
 }
 
-void	simple_quotes_(t_data *data, char *line_read, int i, char *value)
+void	simple_quotes_(t_data *data, char *line_read, int *i, char *value)
 {
 	int		j;
 	char	*name;
@@ -73,14 +74,15 @@ void	simple_quotes_(t_data *data, char *line_read, int i, char *value)
 
 	j = 0;
 	value = (char *)malloc(sizeof(char) * ft_strlen(line_read) + 1);
-	while (line_read[++i] && (line_read[i] != '\'' || line_read[i] == '\\'))
-		value[j++] = line_read[i];
+	while (line_read[++*i] && (line_read[*i] != '\'' || line_read[*i - 1] == '\\'))
+		value[j++] = line_read[*i];
 	value[j] = '\0';
-	name = ft_itoa(getpid() + i);
-	tmp = ft_strjoin("$", name);
+	name = ft_itoa(getpid() + *i);
+	tmp = ft_strjoin("$'", name);
 	free(name);
 	add_var(data, data->var_tmp, tmp, value);
 	tmp1 = ft_strjoin("\'", value);
+	free(value);
 	tmp2 = ft_strjoin(tmp1, "\'");
 	free(tmp1);
 	str_replace(line_read, tmp2, tmp);
@@ -88,20 +90,27 @@ void	simple_quotes_(t_data *data, char *line_read, int i, char *value)
 	free(tmp);
 }
 
-void	quotes_(t_data *data, char *line_read)
+char	*quotes_(t_data *data, char *line_read)
 {
 	int		i;
+	char	*new_line;
 	char	*value;
 
 	i = 0;
+	if (!line_read)
+		return (line_read);
 	value = (char *) NULL;
-	while (line_read[i])
+	new_line = malloc(sizeof(char) * ft_strlen(line_read) + 10);
+	ft_strcpy(new_line, line_read);
+	free(line_read);
+	while (new_line[i])
 	{
-		if (line_read[i] == '"' && (i == 0 || line_read[i - 1] != '\\'))
-			double_quotes_(data, line_read, i, value);
-		if (line_read[i] == '\'' && (i == 0 || line_read[i - 1] != '\\'))
-			simple_quotes_(data, line_read, i, value);
-		if (line_read[i])
+		if (new_line[i] == '"' && (i == 0 || new_line[i - 1] != '\\'))
+			double_quotes_(data, new_line, &i, value);
+		if (new_line[i] == '\'' && (i == 0 || new_line[i - 1] != '\\'))
+			simple_quotes_(data, new_line, &i, value);
+		if (new_line[i])
 			i++;
 	}
+	return (new_line);
 }
