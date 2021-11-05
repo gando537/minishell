@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:44:21 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/29 17:12:39 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/05 18:42:11 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int	checker_cmd_bis(char **tmp, char **cmd_split, int i, char *r)
 	char	**tmp2;
 
 	tmp2 = ft_split(tmp[i], ' ');
-	if (ft_strcmp(tmp2[0], "<") == 0 || ft_strcmp(tmp2[0], "<<") == 0)
+	if (*tmp2 && (ft_strcmp(tmp2[0], "<") == 0 || \
+		ft_strcmp(tmp2[0], "<<") == 0))
 	{
 		i += 2;
 		if (redir_in(tmp, tmp2, cmd_split, r))
@@ -70,7 +71,8 @@ int	checker_cmd_bis(char **tmp, char **cmd_split, int i, char *r)
 			return (2);
 		return (0);
 	}
-	if (ft_strcmp(cmd_split[0], "export") && ft_strcmp(cmd_split[0], "unset"))
+	if (*cmd_split && (ft_strcmp(cmd_split[0], "export") && \
+		ft_strcmp(cmd_split[0], "unset")))
 		if (checker_red(tmp, tmp2, cmd_split))
 			return (1);
 	return (4);

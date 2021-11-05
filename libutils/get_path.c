@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:29:42 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/29 17:12:39 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/05 18:55:55 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*search_path(char **paths, char *cmd)
 	char	*part_path;
 
 	i = 0;
-	while (paths[i] && cmd[1] != '/')
+	while (cmd && cmd + 1 && paths[i] && cmd[1] != '/')
 	{
 		part_path = ft_strjoin(paths[i], "/");
 		path = ft_strjoin(part_path, cmd);
@@ -29,7 +29,7 @@ char	*search_path(char **paths, char *cmd)
 		ft_strdel(&path);
 		i++;
 	}
-	return (NULL);
+	return ((char *) NULL);
 }
 
 char	*get_path(char *cmd)

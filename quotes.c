@@ -6,11 +6,17 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 10:57:54 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/31 23:19:21 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/05 19:16:18 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Includes/minishell.h"
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
+}
 
 int	invalid_quote(char *str)
 {

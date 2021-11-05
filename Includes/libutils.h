@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:46:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/29 17:17:33 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/05 16:09:27 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_ind
 	int	w_len;
 }t_ind;
 
+void		ft_putchar_fd(char c, int fd);
 size_t		ft_strlen(char *str);
 int			ft_isspace(char c);
 char		*ft_itoa(int n);

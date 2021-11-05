@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:46:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/31 23:16:49 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/05 19:52:53 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,9 @@ typedef struct s_data
 	char			*pid_sh;
 	char			*prompt;
 	char			*sub_str;
+	char			*limiter;
+	char			*tmp;
+	int				heredoc;
 	t_cmd			**cmd;
 	t_hist			**hist;
 	t_hist			*hist_curr_up;
@@ -185,8 +188,9 @@ void		valid_red(char **cmd, t_data *data, int i);
 void		loop_insert_char(int pos, char *dst, char *tmp, t_gnl gnl);
 
 void		write_fd(char *s);
-void		limiter(char *str);
-void		delimiter(char **str, int i, t_data *data);
+void		limiter(t_data *data);
+void		ft_putendl_fd(char *s, int fd);
+void		delimiter(char **str, int i, t_data *data, char **path);
 int			builti_bis_(t_data *data, char **split);
 int			checker_builti(char *r, char **cmd_split, t_data *data);
 void		builtin_pwd_echo(t_data *data, char **cmd_split, char *r);
@@ -208,7 +212,7 @@ void		free_var(char *tmp, char *l);
 int			builtin_pwd(void);
 char		*dup_key(char *buf);
 int			get_next_line(char **line, int fd);
-void		pop_redir(t_data *data, char **s, char *r, int i);
+char		*pop_redir(t_data *data, char **s, char *r, int i);
 int			var_bis(t_listenv *tmp, char *name, char *value);
 int			search_vari(t_data *data, char **split);
 char		*replace_value(t_data *data, char *line);

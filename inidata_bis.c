@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 12:09:22 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/27 20:44:55 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/05 17:48:19 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,20 +75,23 @@ t_data	*alloc_data(void)
 	return (data);
 }
 
-void	limiter(char *str)
+void	limiter(t_data *data)
 {
 	char	*readop;
 	int		r;
 
+	data->inter->in = 1;
 	while (1)
 	{
 		ft_putstr_fd("heredoc> ", 1);
 		r = get_next_line(&readop, 0);
-		if (ft_strncmp(str, readop, ft_strlen(readop)) == 0)
+		if (ft_strcmp(data->limiter, readop) == 0 && ft_strlen(readop) != 0)
 		{
 			free(readop);
+			close(data->inter->i_fd);
 			return ;
 		}
+		ft_putendl_fd(readop, data->inter->i_fd);
 		free(readop);
 	}
 }

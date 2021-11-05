@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:35:57 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/27 20:39:07 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/05 18:55:35 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,25 @@ void	builtin_pwd_echo(t_data *data, char **cmd_split, char *r)
 
 int	checker_builti(char *r, char **cmd_split, t_data *data)
 {
-	if (ft_strcmp(cmd_split[0], "cd") == 0)
+	if (*cmd_split)
 	{
-		data->inter->last_exit = ft_chdir(r);
-		return (1);
-	}
-	if (ft_strcmp(cmd_split[0], "pwd") == 0
-		|| ft_strcmp(cmd_split[0], "echo") == 0)
-	{
-		builtin_pwd_echo(data, cmd_split, r);
-		return (1);
-	}
-	if (ft_strcmp(cmd_split[0], "env") == 0)
-	{
-		printer_env(data->listenv);
-		data->inter->last_exit = 0;
-		return (1);
+		if (ft_strcmp(cmd_split[0], "cd") == 0)
+		{
+			data->inter->last_exit = ft_chdir(r);
+			return (1);
+		}
+		if (ft_strcmp(cmd_split[0], "pwd") == 0
+			|| ft_strcmp(cmd_split[0], "echo") == 0)
+		{
+			builtin_pwd_echo(data, cmd_split, r);
+			return (1);
+		}
+		if (ft_strcmp(cmd_split[0], "env") == 0)
+		{
+			printer_env(data->listenv);
+			data->inter->last_exit = 0;
+			return (1);
+		}
 	}
 	return (0);
 }

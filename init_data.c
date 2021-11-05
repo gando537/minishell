@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 12:06:15 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/27 20:37:28 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/05 15:46:15 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	init_data(t_data *data, char *r)
 	data->inter->n = data->inter->nb_pipes;
 	data->my_pipes = creat_pipe(data->inter->nb_pipes);
 	data->inter->j = 0;
+	data->tmp = (char *) NULL;
 	free_split(cmd);
 	free_split(data->pip);
 }

@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 12:23:22 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/27 20:39:38 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/05 19:04:12 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_first(t_data *data)
 {
-	if (data->inter->j != 0)
+	if (data->inter->j != 0 && data->inter->in == 0)
 	{
 		if (dup2(data->my_pipes[data->inter->j - 2], 0) < 0)
 		{
@@ -23,7 +23,7 @@ void	check_first(t_data *data)
 			exit(1);
 		}
 	}
-	else if (data->inter->j == 0 && data->inter->in == 1)
+	else if (data->inter->in)
 	{
 		close(0);
 		if (dup(data->inter->i_fd) < 0)

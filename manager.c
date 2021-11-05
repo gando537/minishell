@@ -6,13 +6,13 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:43:47 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/27 20:37:57 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/05 19:59:14 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Includes/minishell.h"
 
-static void	check_global(char *r, t_data *data)
+static char	*check_global(char *r, t_data *data)
 {
 	char	**cmd_split;
 	char	**s;
@@ -26,7 +26,7 @@ static void	check_global(char *r, t_data *data)
 	{
 		if (check_redir(s[i]) && s[i + 1])
 		{
-			pop_redir(data, s, r, i);
+			r = pop_redir(data, s, r, i);
 			break ;
 		}
 		++i;
@@ -36,6 +36,7 @@ static void	check_global(char *r, t_data *data)
 	if (data->inter->b != 2)
 		if (ft_checker_cmd(r, cmd_split))
 			exit (127);
+	return (r);
 }
 
 void	builti_w(t_data *data, char *cmd)
@@ -53,7 +54,7 @@ int	child(t_data *data, char *line, char *tmp)
 	char	*l;
 
 	l = (char *) NULL;
-	check_global(line, data);
+	line = check_global(line, data);
 	l = parse_cmd(data, line);
 	if (!l)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 09:57:27 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/27 20:31:49 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/05 20:03:49 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,25 @@ void	free_var(char *tmp, char *l)
 		free(l);
 }
 
-void	pop_redir(t_data *data, char **s, char *r, int i)
+char	*pop_redir(t_data *data, char **s, char *r, int i)
 {
-	delimiter(s, i, data);
+	char	*path;
+	char	*tmp;
+
+	path = (char *) NULL;
+	delimiter(s, i, data, &path);
 	data->inter->out = 0;
 	if (ft_isinset('>', r))
 		data->inter->out = 1;
 	str_replace(r, s[i], "");
-	str_replace(r, s[i + 1], "");
+	if (!path)
+	{
+		tmp = malloc(sizeof(char) * ft_strlen(r) + 5);
+		ft_strcpy(tmp, r);
+		str_replace(tmp, s[i + 1], "cat");
+		return (tmp);
+	}
+	else
+		free(path);
+	return (r);
 }
