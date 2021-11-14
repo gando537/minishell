@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:44:21 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/11/05 18:42:11 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/14 14:39:14 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	checker_red(char **tmp, char **tmp2, char **cmd_split)
 	char	*p;
 
 	p = get_path(tmp2[0]);
-	if (p == NULL)
+	if (p == NULL && !is_builtin(tmp2[0]))
 	{
-		printf("minishell: command not found: %s\n", cmd_split[0]);
+		printf("minishell: command not found: %s\n", tmp2[0]);
 		free(p);
 		free_split(tmp);
 		free_split(tmp2);

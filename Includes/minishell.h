@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:46:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/11/05 19:52:53 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/14 17:50:59 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ void		write_fd(char *s);
 void		limiter(t_data *data);
 void		ft_putendl_fd(char *s, int fd);
 void		delimiter(char **str, int i, t_data *data, char **path);
-int			builti_bis_(t_data *data, char **split);
+int			builti_bis_(t_data *data, char **split, char *cmd);
 int			checker_builti(char *r, char **cmd_split, t_data *data);
 void		builtin_pwd_echo(t_data *data, char **cmd_split, char *r);
 
@@ -210,7 +210,7 @@ void		gand(char *s, t_data *data);
 int			ft_chdir(char *r);
 void		free_var(char *tmp, char *l);
 int			builtin_pwd(void);
-char		*dup_key(char *buf);
+int			all_builtin(char *r, char **cmd_split, t_data *data);
 int			get_next_line(char **line, int fd);
 char		*pop_redir(t_data *data, char **s, char *r, int i);
 int			var_bis(t_listenv *tmp, char *name, char *value);

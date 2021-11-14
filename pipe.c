@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 17:15:50 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/11/05 19:16:16 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/14 17:52:21 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	exec_over(t_data *data, t_cmdpath *compath, int i)
 {
 	check_first(data);
 	check_last(data, i);
-	if (data->inter->b || checker_builti(compath->str, compath->cmd, data))
+	if (data->inter->b || all_builtin(compath->str, compath->cmd, data))
 	{
 		data->inter->last_exit = 0;
 		return ;

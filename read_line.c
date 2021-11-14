@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:27:03 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/31 23:17:34 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/14 15:26:29 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_chdir(char *r)
 {
 	char	*p_r;
 
-	if (ft_strlen(r) < 3)
+	if (ft_strlen(r) <= 3)
 	{
 		chdir(getenv("HOME"));
 		return (0);

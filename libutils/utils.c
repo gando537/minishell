@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:57:59 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/10/29 17:12:39 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/14 14:42:55 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,16 @@ size_t	find_char(char *s, char c)
 	while (s[i] && s[i] != c)
 		++i;
 	return (i);
+}
+
+int	is_builtin(char	*str)
+{
+	if (!ft_strcmp(str, "exit") || \
+		!ft_strcmp(str, "pwd") || \
+		!ft_strcmp(str, "cd") || \
+		!ft_strcmp(str, "echo") || \
+		!ft_strcmp(str, "export") || \
+		!ft_strcmp(str, "unset"))
+		return (1);
+	return (0);
 }

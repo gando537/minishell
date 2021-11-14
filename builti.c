@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:35:57 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/11/05 18:55:35 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/14 17:51:21 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,14 @@ int	checker_builti(char *r, char **cmd_split, t_data *data)
 {
 	if (*cmd_split)
 	{
-		if (ft_strcmp(cmd_split[0], "cd") == 0)
-		{
-			data->inter->last_exit = ft_chdir(r);
-			return (1);
-		}
 		if (ft_strcmp(cmd_split[0], "pwd") == 0
 			|| ft_strcmp(cmd_split[0], "echo") == 0)
 		{
 			builtin_pwd_echo(data, cmd_split, r);
 			return (1);
 		}
-		if (ft_strcmp(cmd_split[0], "env") == 0)
+		if (ft_strcmp(cmd_split[0], "env") == 0 || \
+			ft_strcmp(cmd_split[0], "printenv") == 0)
 		{
 			printer_env(data->listenv);
 			data->inter->last_exit = 0;
@@ -64,9 +60,14 @@ int	checker_builti(char *r, char **cmd_split, t_data *data)
 	return (0);
 }
 
-int	builti_bis_(t_data *data, char **split)
+int	builti_bis_(t_data *data, char **split, char *cmd)
 {
 	data->inter->b = 1;
+	if (ft_strcmp(split[0], "cd") == 0)
+	{
+		data->inter->last_exit = ft_chdir(cmd);
+		return (1);
+	}
 	if (ft_strcmp(split[0], "export") == 0)
 	{
 		if (split[1])
@@ -88,14 +89,11 @@ int	builti_bis_(t_data *data, char **split)
 	return (0);
 }
 
-char	*dup_key(char *buf)
+int	all_builtin(char *r, char **cmd_split, t_data *data)
 {
-	char	*dst;
-
-	dst = malloc(sizeof(*dst) * 4);
-	if (!dst)
-		return (NULL);
-	dst[0] = '\0';
-	free(buf);
-	return (dst);
+	if (ft_strcmp(cmd_split[0], "exit") == 0)
+		return (1);
+	if (checker_builti(r, cmd_split, data))
+		return (1);
+	return (0);
 }

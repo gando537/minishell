@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:43:47 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/11/05 19:59:14 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/14 17:54:26 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	builti_w(t_data *data, char *cmd)
 
 	sp = ft_split(cmd, ' ');
 	if (*sp)
-		builti_bis_(data, sp);
+		builti_bis_(data, sp, cmd);
 	free_split(sp);
 }
 

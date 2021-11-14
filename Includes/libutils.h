@@ -6,7 +6,7 @@
 /*   By: mdiallo <mdiallo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:46:09 by mdiallo           #+#    #+#             */
-/*   Updated: 2021/11/05 16:09:27 by mdiallo          ###   ########.fr       */
+/*   Updated: 2021/11/14 14:41:42 by mdiallo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int			check_file_exist(const char	*filename);
 int			ft_checker_cmd(char *r, char **cmd_split);
 
 char		*substr(char *str);
+int			is_builtin(char	*str);
 int			ft_putchar(int c);
 void		ft_strdel(char **as);
 int			ft_strcmp(char *s1, char *s2);
